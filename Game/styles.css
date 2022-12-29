@@ -30,3 +30,7 @@ button{
 #playerImg, #backGround, #enemyImg{
     display: none;
 }
+
+p {
+    padding: 3rem 5rem;
+}

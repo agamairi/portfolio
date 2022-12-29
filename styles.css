@@ -280,71 +280,7 @@ li::before{
 .about-stats {
     padding-bottom: 4rem;
 }
-
-.about-stats .progress-bars {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 2rem;
-}
-
-.progress-bar {
-    display: flex;
-    flex-direction: column;
-}
-
-.about-stats .progress-bars .progress-bar .prog-title {
-    text-transform: uppercase;
-    font-weight: 500;
-}
-.about-stats .progress-bars .progress-bar .progress-con {
-    display: flex;
-    align-items: center;
-}
-.about-stats .progress-bars .progress-bar .progress-con .prog-text {
-    color: #ccc;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress {
-    width: 100%;
-    height: 0.45rem;
-    background-color: #191d2b;
-    border: 1px solid #192841;
-    margin-left: 1rem;
-    position: relative;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress span {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #fe019a;
-    transition: all 0.4s ease-in-out;
-    width: 60%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .html {
-    width: 80%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .css {
-    width: 78%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .js {
-    width: 70%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .cSharp {
-    width: 70%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .cPlus {
-    width: 70%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .python {
-    width: 70%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .unity {
-    width: 65%;
-}
-.about-stats .progress-bars .progress-bar .progress-con .progress .flutter {
-    width: 65%;
-}
-  
+ 
 .stat-title {
     text-transform: uppercase;
     font-size: 1.4rem;
@@ -494,8 +430,14 @@ h5{
     transform: scale(1);
 }
 
+td{
+  text-align: center;
+  padding: 1rem;
+}
+
 .small-screen {
     display: none;
+    text-align: justify;
 }
 
 /* GAME PAGE */
@@ -520,6 +462,7 @@ iframe{
   .contact-content-con .left-contact p {
     margin: 1rem 0;
     line-height: 2rem;
+    text-align: justify;
   }
   .contact-content-con .left-contact .contact-info .contact-item {
     display: flex;
@@ -908,5 +851,20 @@ iframe{
     .main-title h2 .bg-text {
       font-size: 4rem;
     }
+    img {
+      display: none;
+    }
+
+    li::before{
+      content: "";
+  }
+
+  table{
+    overflow-x: auto;
+  }
+  td {
+    padding: 0 0;
+  }
+  
   }
 @import './_media.css';
