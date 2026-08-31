@@ -5,15 +5,76 @@ import { useEffect, useMemo, useState } from "react";
 type AppId = "about" | "work" | "projects" | "skills" | "contact";
 
 const projects = [
-  { name: "MovieBrowser", tag: "Native iOS (Swift/SwiftUI)", tint: "#29335C", icon: "MB", copy: "A SwiftUI MVVM app with a protocol-first service layer, multi-layer caching (NSCache + URLCache), dependency injection, Core Image gradients, and XCTest coverage.", stack: ["SwiftUI", "Combine", "Core Image", "XCTest"], href: "https://github.com/agamairi/moviebrowser" },
-  { name: "WeatherNow", tag: "Native iOS (SwiftUI)", tint: "#669BBC", icon: "WN", copy: "A native SwiftUI weather app with URLSession, Codable JSON, MVVM, search history, and App Store-ready loading and error states.", stack: ["SwiftUI", "URLSession", "Codable", "UserDefaults"], href: "https://github.com/agamairi/WeatherNow" },
-  { name: "A.I.R.I", tag: "On-device AI (Flutter)", tint: "#E4572E", icon: "AI", copy: "A privacy-first Flutter app running local LLMs with on-device RAG, multimodal chat, voice, and an OpenAI-compatible LAN server.", stack: ["Flutter", "llama.cpp", "RAG", "TTS / STT"], href: "https://github.com/agamairi/A.I.R.I" },
+  { name: "QuotaWidget", tag: "Shipped macOS app", tint: "#E4572E", icon: "QW", copy: "A native macOS menu-bar and WidgetKit app that tracks AI-coding quota across Claude Code, Codex, and Antigravity. Reads local CLI logs only — no servers. $2.99 one-time.", stack: ["Swift", "WidgetKit", "AppKit", "macOS"], href: "https://agamairi.github.io/quota-widget-site/" },
+  { name: "A.I.R.I", tag: "On-device AI · Flutter · 20★", tint: "#669BBC", icon: "AI", copy: "A privacy-first Flutter app running local LLMs with on-device RAG, multimodal chat, voice, and an OpenAI-compatible LAN server.", stack: ["Flutter", "llama.cpp", "RAG", "TTS / STT"], href: "https://github.com/agamairi/A.I.R.I" },
+  { name: "MovieBrowser", tag: "Native iOS · Swift / SwiftUI", tint: "#29335C", icon: "MB", copy: "A SwiftUI MVVM app with a protocol-first service layer, multi-layer caching (NSCache + URLCache), dependency injection, Core Image gradients, and XCTest coverage.", stack: ["SwiftUI", "Combine", "Core Image", "XCTest"], href: "https://github.com/agamairi/moviebrowser" },
+  { name: "WeatherNow", tag: "Native iOS · SwiftUI", tint: "#669BBC", icon: "WN", copy: "A native SwiftUI weather app with URLSession, Codable JSON, MVVM, search history, and App Store-ready loading and error states.", stack: ["SwiftUI", "URLSession", "Codable", "UserDefaults"], href: "https://github.com/agamairi/WeatherNow" },
   { name: "forge_mvvm", tag: "Published Flutter package", tint: "#F3A712", icon: "FM", copy: "An MVVM and Clean Architecture framework on pub.dev with runtime dependency-graph validation, typed async primitives, and a feature-scaffolding CLI.", stack: ["Dart", "Flutter", "MVVM", "CLI"], href: "https://pub.dev/packages/forge_mvvm" },
-  { name: "PrepStation", tag: "Desktop video editor (iOS + macOS)", tint: "#A8C686", icon: "PS", copy: "A Flutter video editor for iOS and macOS with a multi-track timeline, 30+ transitions, keyframe animation, FFmpeg export, and Apple Vision background removal.", stack: ["Flutter", "FFmpeg", "Apple Vision", "macOS"], href: "https://github.com/agamairi/prepstation-video-editor" },
-  { name: "DreamAiri", tag: "Agentic game-dev assistant (full-stack)", tint: "#E4572E", icon: "DA", copy: "A full-stack AI coding assistant for game development with a Go backend, real-time tool execution in Godot, and multi-turn LLM workflows.", stack: ["Go", "WebSocket", "PostgreSQL", "Godot"], href: "https://github.com/agamairi/dreamairi-plugin" },
-  { name: "AI Council", tag: "Multi-LLM research platform (Python)", tint: "#669BBC", icon: "AC", copy: "A fully offline Flask and Socket.IO platform for local LLM debate, web research, document analysis, and tool use.", stack: ["Python", "Flask", "Socket.IO", "Local LLMs"], href: "https://github.com/agamairi/ai-council" },
-  { name: "sfxr macOS port", tag: "Native macOS (Objective-C++)", tint: "#29335C", icon: "SF", copy: "A native Cocoa and AppKit port of the classic sfxr sound-effect generator with Core Audio, WAV export, .sfs load/save, and universal binaries.", stack: ["Objective-C++", "AppKit", "Core Audio", "Cocoa"], href: "https://github.com/agamairi/sfxr-mac-port" },
+  { name: "PrepStation", tag: "Video editor · iOS + macOS", tint: "#A8C686", icon: "PS", copy: "A Flutter video editor for iOS and macOS with a multi-track timeline, 30+ transitions, keyframe animation, FFmpeg export, and Apple Vision background removal.", stack: ["Flutter", "FFmpeg", "Apple Vision", "macOS"], href: "https://github.com/agamairi/prepstation-video-editor" },
+  { name: "DreamAiri", tag: "Full-stack agentic assistant", tint: "#E4572E", icon: "DA", copy: "A full-stack AI coding assistant for game development with a Go backend (JWT, WebSocket), PostgreSQL, and real-time tool execution inside the Godot editor.", stack: ["Go", "WebSocket", "PostgreSQL", "Godot"], href: "https://github.com/agamairi/dreamairi-plugin" },
+  { name: "AI Council", tag: "Multi-LLM platform · Python · 9★", tint: "#669BBC", icon: "AC", copy: "A fully offline Flask and Socket.IO platform for local LLM debate, web research, document analysis, and tool use.", stack: ["Python", "Flask", "Socket.IO", "Local LLMs"], href: "https://github.com/agamairi/ai-council" },
+  { name: "sfxr macOS port", tag: "Native macOS · Objective-C++", tint: "#29335C", icon: "SF", copy: "A native Cocoa and AppKit port of the classic sfxr sound-effect generator with Core Audio, WAV export, .sfs load/save, and universal binaries.", stack: ["Objective-C++", "AppKit", "Core Audio", "Cocoa"], href: "https://github.com/agamairi/sfxr-mac-port" },
+  { name: "job-swipe", tag: "Job-search app · Flutter", tint: "#A8C686", icon: "JS", copy: "A Flutter job-search app with a swipe-based browsing interface.", stack: ["Flutter", "Dart"], href: "https://github.com/agamairi/job-swipe" },
 ];
+
+const proofStats = [
+  { num: "30%", unit: "faster", desc: "Cut SolarX app and data load times — profiling and production debugging." },
+  { num: "300+", unit: "airport staff", desc: "PRMGO migration to Flutter + Node.js, live at Toronto Pearson." },
+  { num: "1K+", unit: "events / day", desc: "Passenger-tracking events in the airport-operations system." },
+];
+
+const featuredBuilds = [
+  { name: "QuotaWidget", mark: "QW", desc: "Shipped native macOS menu-bar app — tracks AI-coding quota, fully local.", href: "https://agamairi.github.io/quota-widget-site/", cta: "Visit site ↗" },
+  { name: "A.I.R.I", mark: "AI", desc: "Flutter · on-device LLMs · local RAG · voice · OpenAI-compatible LAN server.", href: "https://github.com/agamairi/A.I.R.I", cta: "View on GitHub ↗" },
+  { name: "MovieBrowser", mark: "MB", desc: "Native iOS / SwiftUI · MVVM · protocol-first services · layered caching · XCTest.", href: "https://github.com/agamairi/moviebrowser", cta: "View on GitHub ↗" },
+];
+
+const stackHighlights = [
+  "Kotlin UART bridge — direct control of custom Android hardware, battery modules, ToF sensors.",
+  "Swift IoT bridge — device telemetry, OTA firmware updates, APNs push via Amazon SNS.",
+  "Full release ownership — TestFlight, App Store, Google Play, enterprise MDM.",
+];
+
+function useRotator(count: number, ms: number) {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+  useEffect(() => {
+    if (count < 2 || paused) return;
+    if (typeof window === "undefined" || !window.matchMedia) return;
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (media.matches) return;
+    const timer = window.setInterval(() => { setIndex((prev) => (prev + 1) % count); }, ms);
+    return () => window.clearInterval(timer);
+  }, [count, ms, paused]);
+  const holdProps = {
+    onMouseEnter: () => setPaused(true),
+    onMouseLeave: () => setPaused(false),
+    onFocusCapture: () => setPaused(true),
+    onBlurCapture: () => setPaused(false),
+  };
+  return { index, setIndex, holdProps };
+}
+
+function Dots({ count, index, onPick }: { count: number; index: number; onPick: (i: number) => void }) {
+  return (
+    <div className="rot-dots" onClick={(e) => e.stopPropagation()}>
+      {Array.from({ length: count }, (_, i) => (
+        <button key={i} type="button" className={i === index ? "on" : ""} onClick={(e) => { e.stopPropagation(); onPick(i); }} aria-label={`Go to slide ${i + 1}`} />
+      ))}
+    </div>
+  );
+}
+
+function QuickLinks({ className = "" }: { className?: string }) {
+  return (
+    <nav className={`ipad-links ${className}`.trim()} onClick={(e) => e.stopPropagation()} aria-label="Quick links">
+      <a href="/Agam_Airi_Resume.pdf" download>Résumé</a>
+      <a href="https://github.com/agamairi" target="_blank" rel="noreferrer">GitHub</a>
+      <a href="https://www.linkedin.com/in/agam-airi" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="mailto:agam.airi@outlook.com">Email</a>
+    </nav>
+  );
+}
 
 const apps: { id: AppId; label: string; color: string; glyph: string }[] = [
   { id: "about", label: "About", color: "#669BBC", glyph: "AA" },
@@ -70,6 +131,11 @@ export default function Home() {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [page, setPage] = useState(0);
+
+  const statsRot = useRotator(proofStats.length, 7000);
+  const projRot = useRotator(featuredBuilds.length, 8000);
+  const stackRot = useRotator(stackHighlights.length, 8000);
+
   useEffect(() => { const tick = () => { const now = new Date(); setTime(new Intl.DateTimeFormat("en-CA", { hour: "numeric", minute: "2-digit" }).format(now)); setDate(new Intl.DateTimeFormat("en-CA", { weekday: "long", month: "long", day: "numeric" }).format(now)); }; tick(); const timer = window.setInterval(tick, 30000); const openApp = (event: Event) => setActive((event as CustomEvent<AppId>).detail); window.addEventListener("open-app", openApp); return () => { window.clearInterval(timer); window.removeEventListener("open-app", openApp); }; }, []);
   useEffect(() => { const keydown = (event: KeyboardEvent) => { if (event.key === "Escape") setActive(null); if (!active && event.key === "ArrowRight") setPage(1); if (!active && event.key === "ArrowLeft") setPage(0); }; window.addEventListener("keydown", keydown); return () => window.removeEventListener("keydown", keydown); }, [active]);
   const ActiveApp = useMemo(() => { if (active === "about") return <About close={() => setActive(null)} />; if (active === "work") return <Work close={() => setActive(null)} />; if (active === "projects") return <Projects close={() => setActive(null)} />; if (active === "skills") return <Skills close={() => setActive(null)} />; if (active === "contact") return <Contact close={() => setActive(null)} />; return null; }, [active]);
@@ -92,33 +158,51 @@ export default function Home() {
             <section className="ipad-home" aria-hidden={active !== null}>
               <header className="ipad-greeting">
                 <div><p>{date || "Monday, August 24"}</p><h1>Good evening, <span>Agam.</span></h1></div>
-                <button onClick={() => setActive("contact")}><i /> Available for opportunities</button>
+                <div className="ipad-greeting-side">
+                  <span className="ipad-avail"><i /> Available · Toronto</span>
+                  <QuickLinks />
+                </div>
               </header>
               <div className="ipad-grid">
                 <button className="ipad-widget ipad-profile" onClick={() => setActive("about")}>
                   <div className="widget-top"><span className="mini-avatar">AA</span><span className="widget-chip">PROFILE</span></div>
-                  <div><p>Mobile · iOS · Software Engineer</p><h2>Apps that connect<br />software to <em>the real world.</em></h2></div>
+                  <div><p>Agam Airi · Toronto, ON · 3+ yrs</p><h2>Apps that connect<br />software to <em>the real world.</em></h2><p className="ipad-profile-sub">Mobile Application Developer · iOS Developer · Software Engineer</p></div>
                   <span className="widget-link">Open About <b>↗</b></span>
                 </button>
                 <button className="ipad-widget ipad-current" onClick={() => setActive("work")}>
                   <div className="widget-top"><span className="widget-chip light">NOW</span><span>↗</span></div>
-                  <div><p>Solaris Robots</p><h3>Mobile systems for robotics, IoT, and airport operations.</h3></div>
-                  <div className="current-tags"><span>300+ staff</span><span>1K+ events/day</span></div>
+                  <div><p>Mobile Application Developer</p><h3>Solaris Robots — robotics, IoT &amp; airport operations.</h3></div>
+                  <div className="current-tags"><span>Feb 2024 – now</span><span>300+ staff</span><span>1K+ events/day</span></div>
                 </button>
-                <button className="ipad-widget ipad-stats" onClick={() => setActive("about")}>
-                  <span className="widget-chip">AT A GLANCE</span>
-                  <div className="stat-ring"><strong>30%</strong><span>faster</span></div>
-                  <p>Load-time reduction across robotics apps</p>
-                </button>
-                <button className="ipad-widget ipad-project" onClick={() => setActive("projects")}>
-                  <div className="project-orbit"><span>AI</span><i /><i /><i /></div>
-                  <div><span className="widget-chip light">FEATURED BUILD</span><h3>A.I.R.I</h3><p>On-device LLMs, local RAG &amp; LAN API server.</p></div>
-                  <b>Explore project →</b>
-                </button>
-                <button className="ipad-widget ipad-stack" onClick={() => setActive("skills")}>
+                <div className="ipad-widget ipad-stats" role="button" tabIndex={0} onClick={() => setActive("about")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("about"); } }} {...statsRot.holdProps}>
+                  <span className="widget-chip">PROOF AT A GLANCE</span>
+                  <div key={statsRot.index} className="rot-fade">
+                    <div className="stat-ring"><strong>{proofStats[statsRot.index].num}</strong><span>{proofStats[statsRot.index].unit}</span></div>
+                    <p className="rot-line">{proofStats[statsRot.index].desc}</p>
+                  </div>
+                  <Dots count={proofStats.length} index={statsRot.index} onPick={statsRot.setIndex} />
+                </div>
+                <div className="ipad-widget ipad-project" {...projRot.holdProps}>
+                  <div className="project-orbit"><span>{featuredBuilds[projRot.index].mark}</span><i /><i /><i /></div>
+                  <div key={projRot.index} className="rot-fade">
+                    <span className="widget-chip light">FEATURED BUILD</span>
+                    <h3>{featuredBuilds[projRot.index].name}</h3>
+                    <p>{featuredBuilds[projRot.index].desc}</p>
+                  </div>
+                  <div className="ipad-proj-actions">
+                    <a href={featuredBuilds[projRot.index].href} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>{featuredBuilds[projRot.index].cta}</a>
+                    <button type="button" onClick={() => setActive("projects")}>All projects →</button>
+                    <Dots count={featuredBuilds.length} index={projRot.index} onPick={projRot.setIndex} />
+                  </div>
+                </div>
+                <div className="ipad-widget ipad-stack" role="button" tabIndex={0} onClick={() => setActive("skills")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("skills"); } }} {...stackRot.holdProps}>
                   <div className="widget-top"><span className="widget-chip">CORE STACK</span><span>↗</span></div>
                   <div className="stack-cloud"><span>Flutter</span><span>Swift</span><span>SwiftUI</span><span>Kotlin</span><span>Go</span><span>IoT</span></div>
-                </button>
+                  <div className="rot-depth">
+                    <p key={stackRot.index} className="rot-fade rot-line">{stackHighlights[stackRot.index]}</p>
+                    <Dots count={stackHighlights.length} index={stackRot.index} onPick={stackRot.setIndex} />
+                  </div>
+                </div>
                 <div className="ipad-widget ipad-apps">
                   <div className="widget-top"><span className="widget-chip">APPS</span><span className="apps-hint">Click to explore</span></div>
                   <div className="ipad-app-grid">{apps.map((app) => <AppIcon app={app} key={app.id} />)}</div>
@@ -131,7 +215,13 @@ export default function Home() {
 
             <div className={`home-pages page-${page}`} aria-hidden={active !== null}>
               <section className="home-page main-page">
-                <div className="identity-widget"><div className="widget-top"><span className="mini-avatar">AA</span><span className="available"><i /> AVAILABLE</span></div><h2>Agam Airi</h2><p>Mobile, iOS, and software developer bridging hardware, on-device AI, and scalable systems.</p><button onClick={() => setActive("about")}>View profile <span>→</span></button></div>
+                <div className="identity-widget">
+                  <div className="widget-top"><span className="mini-avatar">AA</span><span className="available"><i /> AVAILABLE</span></div>
+                  <h2>Agam Airi</h2>
+                  <p>Mobile &amp; iOS developer · Toronto · 3+ yrs. Native hardware integration, on-device AI, full release ownership.</p>
+                  <QuickLinks className="id-links" />
+                  <button onClick={() => setActive("about")}>View profile <span>→</span></button>
+                </div>
                 <div className="app-grid">{apps.slice(0, 4).map((app) => <AppIcon app={app} key={app.id} />)}</div>
                 <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Building mobile systems at Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
               </section>

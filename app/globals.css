@@ -91,3 +91,36 @@
   .all-projects{background:rgba(41,51,92,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
   .app-window{background:rgba(246,242,231,.96)}
 }
+
+/* Rotator & conversion additions */
+@keyframes rotFade{from{opacity:0}to{opacity:1}}
+.rot-fade{animation:rotFade .28s ease forwards}
+@media(prefers-reduced-motion:reduce){.rot-fade{animation:none}}
+.rot-dots{display:flex;gap:5px;align-items:center;justify-content:center}
+.rot-dots button{width:6px;height:6px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.35);cursor:pointer;transition:background .2s,transform .2s}
+.rot-dots button.on{background:#fff;transform:scale(1.15)}
+.ipad-stats .rot-dots button,.ipad-stack .rot-dots button{background:rgba(41,51,92,.28)}
+.ipad-stats .rot-dots button.on,.ipad-stack .rot-dots button.on{background:var(--navy)}
+.rot-line{margin:0;font-size:8px;line-height:1.35;font-weight:700}
+.ipad-stats .rot-fade{display:flex;flex-direction:column;align-items:center;gap:5px;width:100%}
+.ipad-stats .rot-fade p{max-width:125px;margin:0;font-size:8px;line-height:1.3;font-weight:750}
+.rot-depth{display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(41,51,92,.16);padding-top:7px;margin-top:6px}
+.rot-depth p{margin:0;font-size:8.5px;line-height:1.35;color:rgba(41,51,92,.85);font-weight:700;min-height:0}
+.rot-depth .rot-dots{justify-content:flex-start}
+.ipad-project{cursor:default}
+.ipad-stats,.ipad-stack{cursor:pointer}
+.ipad-stack .stack-cloud{margin-top:14px}
+.ipad-stack .rot-depth{padding-top:7px;margin-top:6px}
+.ipad-proj-actions{display:flex;flex-direction:column;gap:6px;border-top:1px solid rgba(255,255,255,.16);padding-top:9px;margin-top:4px}
+.ipad-proj-actions a,.ipad-proj-actions button{background:none;border:0;padding:0;color:#fff;font-size:9px;font-weight:700;text-align:left;text-decoration:none;cursor:pointer;display:inline-flex;align-items:center;transition:opacity .15s}
+.ipad-proj-actions a:hover,.ipad-proj-actions button:hover{opacity:.8}
+.ipad-proj-actions .rot-dots{justify-content:flex-start;margin-top:2px}
+.ipad-profile .ipad-profile-sub{margin:6px 0 0;color:rgba(41,51,92,.62);font-size:9.5px;font-weight:600;line-height:1.35}
+.ipad-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.ipad-links a{display:inline-flex;align-items:center;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 10px;color:#fff;background:rgba(255,255,255,.1);box-shadow:inset 0 1px rgba(255,255,255,.18);backdrop-filter:blur(22px);font-size:9px;font-weight:700;text-decoration:none;transition:background .2s,transform .2s}
+.ipad-links a:hover{background:rgba(255,255,255,.18);transform:translateY(-1px)}
+.ipad-greeting-side{display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.ipad-avail{display:inline-flex;align-items:center;gap:6px;color:rgba(255,255,255,.85);font-size:9px;font-weight:700;letter-spacing:.04em}
+.ipad-avail i{width:7px;height:7px;border-radius:50%;background:var(--sage);box-shadow:0 0 12px var(--sage);display:inline-block}
+.id-links{margin-top:12px;justify-content:flex-start}
+.id-links a{padding:6px 11px;font-size:9.5px;background:rgba(255,255,255,.12)}

@@ -53,3 +53,6 @@ codex*.log
 /CONTENT_BRIEF.md
 /AGY_REVIEW.md
 /tmp/
+
+# Ignored brainstorm doc
+/PORTFOLIO_FIRST_IMPRESSION.md
