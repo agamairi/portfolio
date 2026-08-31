@@ -138,3 +138,30 @@
 .ipad-apps-links a:hover{border-bottom-color:rgba(255,255,255,.6)}
 .ipad-app-grid .app-label,.app-grid .app-label{line-height:1.15;white-space:normal;overflow-wrap:anywhere}
 .ipad-current{gap:6px}
+
+/* PART 2 and Regression fixes */
+@media(min-width:821px) {
+  .portfolio-shell { grid-template-columns: 1fr; place-items: center; gap: 0; padding: 3vh 2vw; }
+  .phone-wrap { width: 100%; justify-items: center; }
+  
+  .ipad-grid { height: calc(100% - 96px); }
+  .ipad-home { padding-bottom: 92px; }
+  
+  .ipad-stack .stack-cloud { margin-top: 10px; }
+  .skills-at-glance { gap: 8px; }
+  .ipad-stack .rot-depth { gap: 4px; }
+  
+  .ipad-apps { padding: 12px; }
+  .ipad-apps .ipad-app-grid { gap: 6px; margin-top: 9px; }
+  .ipad-apps .ipad-app-grid .app-button:nth-child(n+4) { display: flex; }
+  .ipad-apps .ipad-app-grid .app-icon { width: 34px; height: 34px; border-radius: 10px; }
+  .ipad-apps .ipad-app-grid .app-label { font-size: 6px; line-height: 1.1; }
+  .ipad-apps .ipad-apps-links { margin-top: 8px; padding-top: 7px; gap: 6px; }
+  .ipad-apps .ipad-apps-links a { font-size: 8px; }
+  
+  .ipad-project{justify-content:flex-start;gap:12px}
+  .ipad-project .project-orbit{height:92px}
+}
+
+.app-icon svg { width: 56%; height: 56%; }
+.app-button.small .app-icon svg { width: 60%; height: 60%; }

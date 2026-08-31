@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 type AppId = "about" | "work" | "projects" | "skills" | "contact";
 
 const projects = [
-  { name: "QuotaWidget", tag: "Shipped macOS app", tint: "#E4572E", icon: "QW", copy: "A native macOS menu-bar and WidgetKit app that tracks AI-coding quota across Claude Code, Codex, and Antigravity. Reads local CLI logs only — no servers. $2.99 one-time.", stack: ["Swift", "WidgetKit", "AppKit", "macOS"], href: "https://agamairi.github.io/quota-widget-site/" },
+  { name: "QuotaWidget", tag: "Shipped macOS app", tint: "#E4572E", icon: "QW", copy: "A native macOS menu-bar and WidgetKit app that tracks AI-coding quota across Claude Code, Codex, and Antigravity. Reads local CLI logs only, with no servers. $2.99 one-time.", stack: ["Swift", "WidgetKit", "AppKit", "macOS"], href: "https://agamairi.github.io/quota-widget-site/" },
   { name: "A.I.R.I", tag: "On-device AI · Flutter · 20★", tint: "#669BBC", icon: "AI", copy: "A privacy-first Flutter app running local LLMs with on-device RAG, multimodal chat, voice, and an OpenAI-compatible LAN server.", stack: ["Flutter", "llama.cpp", "RAG", "TTS / STT"], href: "https://github.com/agamairi/A.I.R.I" },
   { name: "MovieBrowser", tag: "Native iOS · Swift / SwiftUI", tint: "#29335C", icon: "MB", copy: "A SwiftUI MVVM app with a protocol-first service layer, multi-layer caching (NSCache + URLCache), dependency injection, Core Image gradients, and XCTest coverage.", stack: ["SwiftUI", "Combine", "Core Image", "XCTest"], href: "https://github.com/agamairi/moviebrowser" },
   { name: "WeatherNow", tag: "Native iOS · SwiftUI", tint: "#669BBC", icon: "WN", copy: "A native SwiftUI weather app with URLSession, Codable JSON, MVVM, search history, and App Store-ready loading and error states.", stack: ["SwiftUI", "URLSession", "Codable", "UserDefaults"], href: "https://github.com/agamairi/WeatherNow" },
@@ -24,15 +24,15 @@ const skillAtAGlance = [
 ];
 
 const featuredBuilds = [
-  { name: "QuotaWidget", mark: "QW", desc: "Shipped native macOS menu-bar app — tracks AI-coding quota, fully local.", href: "https://agamairi.github.io/quota-widget-site/", cta: "Visit site ↗" },
+  { name: "QuotaWidget", mark: "QW", desc: "Shipped native macOS menu-bar app that tracks AI-coding quota, fully local.", href: "https://agamairi.github.io/quota-widget-site/", cta: "Visit site ↗" },
   { name: "A.I.R.I", mark: "AI", desc: "Flutter · on-device LLMs · local RAG · voice · OpenAI-compatible LAN server.", href: "https://github.com/agamairi/A.I.R.I", cta: "View on GitHub ↗" },
   { name: "MovieBrowser", mark: "MB", desc: "Native iOS / SwiftUI · MVVM · protocol-first services · layered caching · XCTest.", href: "https://github.com/agamairi/moviebrowser", cta: "View on GitHub ↗" },
 ];
 
 const stackHighlights = [
-  "Kotlin UART bridge — direct control of custom Android hardware, battery modules, ToF sensors.",
-  "Swift IoT bridge — device telemetry, OTA firmware updates, APNs push via Amazon SNS.",
-  "Full release ownership — TestFlight, App Store, Google Play, enterprise MDM.",
+  "Kotlin UART bridge for direct control of custom Android hardware, battery modules, and ToF sensors.",
+  "Swift IoT bridge for device telemetry, OTA firmware updates, and APNs push via Amazon SNS.",
+  "Full release ownership across TestFlight, App Store, Google Play, and enterprise MDM.",
 ];
 
 function useRotator(count: number, ms: number) {
@@ -81,7 +81,7 @@ const apps: { id: AppId; label: string; color: string; glyph: string; icon: Reac
   { id: "work", label: "Experience", color: "#F3A712", glyph: "EX", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" /></svg> },
   { id: "projects", label: "Work samples", color: "#E4572E", glyph: "PR", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" /><path d="m10 11-2 2 2 2M14 11l2 2-2 2" /></svg> },
   { id: "skills", label: "Skills", color: "#A8C686", glyph: "SK", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m12 3 8 4-8 4-8-4 8-4ZM4 12l8 4 8-4M4 17l8 4 8-4" /></svg> },
-  { id: "contact", label: "Contact & résumé", color: "#29335C", glyph: "CO", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg> },
+  { id: "contact", label: "Contact & résumé", color: "#29335C", glyph: "CO", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="12" r="2.2" /><path d="M14 10h4M14 14h4M6.5 16c.5-1.4 1.6-2 2.5-2s2 .6 2.5 2" /></svg> },
 ];
 
 function AppIcon({ app, small = false }: { app: (typeof apps)[number]; small?: boolean }) {
@@ -95,18 +95,18 @@ function Chrome({ title, onClose, children }: { title: string; onClose: () => vo
 function About({ close }: { close: () => void }) {
   return <Chrome title="Profile" onClose={close}>
     <div className="profile-hero"><div className="monogram">AA</div><div><p className="eyebrow">Mobile Application Developer · iOS Developer · Software Engineer</p><h2>Agam Airi</h2><p>Toronto, Canada</p></div></div>
-    <div className="intro-card"><p>I build mobile software that bridges custom hardware, on-device AI, and polished UX—from native integration through production release.</p></div>
+    <div className="intro-card"><p>I build mobile software that bridges custom hardware, on-device AI, and polished UX, from native integration through production release.</p></div>
     <div className="stats-grid"><div><strong>3+</strong><span>years building</span></div><div><strong>10+</strong><span>apps shipped</span></div><div><strong>5+</strong><span>developers mentored</span></div><div><strong>3</strong><span>release channels shipped</span></div></div>
     <section className="content-section"><p className="section-label">HOW I WORK</p><h3>Native depth. Cross-platform speed.</h3><p>My core stack is Flutter, Swift, SwiftUI, and Kotlin, alongside Go and Node.js backend services. I own clean, tested software from native bridges and hardware integration to the App Store, Google Play, and enterprise MDM.</p></section>
-    <section className="content-section education-card"><p className="section-label">EDUCATION</p><div className="education-row"><span>2022—2023</span><div><b>Computer Programming</b><p>Seneca College · Toronto</p></div></div><div className="education-row"><span>2018—2021</span><div><b>BBA, IT Specialization</b><p>Sardar Patel University</p></div></div></section>
+    <section className="content-section education-card"><p className="section-label">EDUCATION</p><div className="education-row"><span>2022-2023</span><div><b>Computer Programming</b><p>Seneca College · Toronto</p></div></div><div className="education-row"><span>2018-2021</span><div><b>BBA, IT Specialization</b><p>Sardar Patel University</p></div></div></section>
   </Chrome>;
 }
 
 function Work({ close }: { close: () => void }) {
   return <Chrome title="Experience" onClose={close}>
     <div className="screen-heading"><p className="eyebrow">Selected work</p><h2>Mobile systems for<br />robots, IoT, and airports.</h2></div>
-    <article className="timeline-card current"><div className="timeline-top"><span className="company-mark solaris">S</span><div><h3>Solaris Robots</h3><p>Mobile Application Developer</p></div><span className="date">2024—NOW</span></div><p className="role-summary">Owning iOS and Android products for robotics, IoT, and airport operations—from native integration to production release.</p><ul><li>Led the PRMGO migration to Flutter and Node.js, supporting 300+ concurrent Toronto Pearson staff and 1,000+ daily passenger-tracking events.</li><li>Built a Kotlin bridge for low-level UART control of custom Android hardware, battery modules, and ToF sensors; engineered a Swift bridge for IoT telemetry and OTA firmware updates.</li><li>Set up APNs push delivery through Amazon SNS and shipped releases across TestFlight, the App Store, Google Play, and enterprise MDM.</li><li>Reduced SolarX application and data load times by 30% through profiling and production debugging.</li><li>Sustained quality with unit and integration testing, technical documentation, clean code, OOP fundamentals, and state management.</li><li>Led peer review of AI-generated code, auditing security, structure, and integrity to flag vulnerabilities and guide architectural fixes.</li></ul></article>
-    <article className="timeline-card"><div className="timeline-top"><span className="company-mark independent">A</span><div><h3>Independent</h3><p>Mobile Developer & Mentor</p></div><span className="date">2023—2024</span></div><p className="role-summary">Built production-grade mobile and web applications while mentoring developers in architecture, OOP, and data structures.</p><ul><li>Shipped 10+ projects across Flutter, Swift, SwiftUI, Objective-C, and React.</li><li>Mentored 5+ junior developers, improving problem-solving and code quality.</li></ul></article>
+    <article className="timeline-card current"><div className="timeline-top"><span className="company-mark solaris">S</span><div><h3>Solaris Robots</h3><p>Mobile Application Developer</p></div><span className="date">2024-NOW</span></div><p className="role-summary">Owning iOS and Android products for robotics, IoT, and airport operations, from native integration to production release.</p><ul><li>Led the PRMGO migration to Flutter and Node.js, supporting 300+ concurrent Toronto Pearson staff and 1,000+ daily passenger-tracking events.</li><li>Built a Kotlin bridge for low-level UART control of custom Android hardware, battery modules, and ToF sensors; engineered a Swift bridge for IoT telemetry and OTA firmware updates.</li><li>Set up APNs push delivery through Amazon SNS and shipped releases across TestFlight, the App Store, Google Play, and enterprise MDM.</li><li>Reduced SolarX application and data load times by 30% through profiling and production debugging.</li><li>Sustained quality with unit and integration testing, technical documentation, clean code, OOP fundamentals, and state management.</li><li>Led peer review of AI-generated code, auditing security, structure, and integrity to flag vulnerabilities and guide architectural fixes.</li></ul></article>
+    <article className="timeline-card"><div className="timeline-top"><span className="company-mark independent">A</span><div><h3>Independent</h3><p>Mobile Developer & Mentor</p></div><span className="date">2023-2024</span></div><p className="role-summary">Built production-grade mobile and web applications while mentoring developers in architecture, OOP, and data structures.</p><ul><li>Shipped 10+ projects across Flutter, Swift, SwiftUI, Objective-C, and React.</li><li>Mentored 5+ junior developers, improving problem-solving and code quality.</li></ul></article>
   </Chrome>;
 }
 
@@ -157,7 +157,7 @@ export default function Home() {
 
             <section className="ipad-home" aria-hidden={active !== null}>
               <header className="ipad-greeting">
-                <div><p>{date || "Monday, August 24"}</p><h1>Hi &mdash; I&rsquo;m <span>Agam.</span></h1><p className="ipad-start-here">Start here: 3+ years shipping iOS and cross-platform mobile products for hardware-connected systems.</p></div>
+                <div><p>{date || "Monday, August 24"}</p><h1>Hi, I&rsquo;m <span>Agam.</span></h1><p className="ipad-start-here">Start here: 3+ years shipping iOS and cross-platform mobile products for hardware-connected systems.</p></div>
                 <div className="ipad-greeting-side">
                   <span className="ipad-avail"><i /> Open to roles across Canada</span>
                   <QuickLinks />
@@ -171,9 +171,9 @@ export default function Home() {
                 </button>
                 <button className="ipad-widget ipad-current" onClick={() => setActive("work")}>
                   <div className="widget-top"><span className="widget-chip light">NOW</span><span>↗</span></div>
-                  <div><p>Mobile Application Developer</p><h3>Solaris Robots — robotics, IoT &amp; airport operations.</h3></div>
+                  <div><p>Mobile Application Developer</p><h3>Solaris Robots · robotics, IoT &amp; airport operations.</h3></div>
                   <p className="current-collab">Mentored 5+ developers · led peer review of AI-generated code.</p>
-                  <div className="current-tags"><span>Feb 2024 – now</span><span>300+ staff</span><span>1K+ events/day</span></div>
+                  <div className="current-tags"><span>Since Feb 2024</span><span>300+ staff</span><span>1K+ events/day</span></div>
                 </button>
                 <div className="ipad-widget ipad-stats" role="button" tabIndex={0} onClick={() => setActive("skills")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("skills"); } }} {...statsRot.holdProps}>
                   <span className="widget-chip">SKILLS AT A GLANCE</span>
@@ -182,7 +182,7 @@ export default function Home() {
                   </div>
                   <Dots count={skillAtAGlance.length} index={statsRot.index} onPick={statsRot.setIndex} />
                 </div>
-                <div className="ipad-widget ipad-project" {...projRot.holdProps}>
+                <div className="ipad-widget ipad-project" role="button" tabIndex={0} onClick={() => setActive("projects")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("projects"); } }} {...projRot.holdProps}>
                   <div className="project-orbit"><span>{featuredBuilds[projRot.index].mark}</span><i /><i /><i /></div>
                   <div key={projRot.index} className="rot-fade">
                     <span className="widget-chip light">FEATURED BUILD</span>
