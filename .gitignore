@@ -51,4 +51,5 @@ next-env.d.ts
 agy*.log
 codex*.log
 /CONTENT_BRIEF.md
+/AGY_REVIEW.md
 /tmp/
