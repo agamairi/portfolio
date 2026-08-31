@@ -56,3 +56,8 @@ codex*.log
 
 # Ignored brainstorm doc
 /PORTFOLIO_FIRST_IMPRESSION.md
+/PORTFOLIO_FIX_PLAN.md
+
+# tsc incremental cache
+tsconfig.tsbuildinfo
+*.tsbuildinfo

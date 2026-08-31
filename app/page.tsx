@@ -18,9 +18,9 @@ const projects = [
 ];
 
 const proofStats = [
-  { num: "30%", unit: "faster", desc: "Cut SolarX app and data load times — profiling and production debugging." },
-  { num: "300+", unit: "airport staff", desc: "PRMGO migration to Flutter + Node.js, live at Toronto Pearson." },
-  { num: "1K+", unit: "events / day", desc: "Passenger-tracking events in the airport-operations system." },
+  { num: "30%", unit: "faster", desc: "Reduced SolarX application and data load times through profiling and production debugging." },
+  { num: "300+", unit: "concurrent staff", desc: "PRMGO migration to Flutter + Node.js for Toronto Pearson operations." },
+  { num: "1K+", unit: "daily events", desc: "Passenger-tracking events in an airport-operations mobile system." },
 ];
 
 const featuredBuilds = [
@@ -77,11 +77,11 @@ function QuickLinks({ className = "" }: { className?: string }) {
 }
 
 const apps: { id: AppId; label: string; color: string; glyph: string }[] = [
-  { id: "about", label: "About", color: "#669BBC", glyph: "AA" },
+  { id: "about", label: "Profile", color: "#669BBC", glyph: "AA" },
   { id: "work", label: "Experience", color: "#F3A712", glyph: "EX" },
-  { id: "projects", label: "Projects", color: "#E4572E", glyph: "PR" },
+  { id: "projects", label: "Work samples", color: "#E4572E", glyph: "PR" },
   { id: "skills", label: "Skills", color: "#A8C686", glyph: "SK" },
-  { id: "contact", label: "Contact", color: "#29335C", glyph: "CO" },
+  { id: "contact", label: "Contact & résumé", color: "#29335C", glyph: "CO" },
 ];
 
 function AppIcon({ app, small = false }: { app: (typeof apps)[number]; small?: boolean }) {
@@ -93,7 +93,7 @@ function Chrome({ title, onClose, children }: { title: string; onClose: () => vo
 }
 
 function About({ close }: { close: () => void }) {
-  return <Chrome title="About" onClose={close}>
+  return <Chrome title="Profile" onClose={close}>
     <div className="profile-hero"><div className="monogram">AA</div><div><p className="eyebrow">Mobile Application Developer · iOS Developer · Software Engineer</p><h2>Agam Airi</h2><p>Toronto, Canada</p></div></div>
     <div className="intro-card"><p>I build mobile software that bridges custom hardware, on-device AI, and polished UX—from native integration through production release.</p></div>
     <div className="stats-grid"><div><strong>3+</strong><span>years building</span></div><div><strong>10+</strong><span>apps shipped</span></div><div><strong>30%</strong><span>faster load times</span></div><div><strong>1K+</strong><span>daily events</span></div></div>
@@ -111,7 +111,7 @@ function Work({ close }: { close: () => void }) {
 }
 
 function Projects({ close }: { close: () => void }) {
-  return <Chrome title="Projects" onClose={close}><div className="screen-heading project-heading"><p className="eyebrow">Open-source lab</p><h2>Things I’ve made.</h2><p>AI on the edge, creative tools, and developer infrastructure.</p></div><div className="project-list">{projects.map((project) => <a key={project.name} className="project-card" href={project.href} target="_blank" rel="noreferrer"><span className="project-icon" style={{ "--project-color": project.tint } as React.CSSProperties}>{project.icon}</span><div className="project-copy"><div className="project-title"><div><h3>{project.name}</h3><p>{project.tag}</p></div><span>↗</span></div><p>{project.copy}</p><div className="tag-row">{project.stack.map((item) => <span key={item}>{item}</span>)}</div></div></a>)}</div></Chrome>;
+  return <Chrome title="Work samples" onClose={close}><div className="screen-heading project-heading"><p className="eyebrow">Open-source lab</p><h2>Things I’ve made.</h2><p>AI on the edge, creative tools, and developer infrastructure.</p></div><div className="project-list">{projects.map((project) => <a key={project.name} className="project-card" href={project.href} target="_blank" rel="noreferrer"><span className="project-icon" style={{ "--project-color": project.tint } as React.CSSProperties}>{project.icon}</span><div className="project-copy"><div className="project-title"><div><h3>{project.name}</h3><p>{project.tag}</p></div><span>↗</span></div><p>{project.copy}</p><div className="tag-row">{project.stack.map((item) => <span key={item}>{item}</span>)}</div></div></a>)}</div></Chrome>;
 }
 
 const skillGroups = [["Languages & Mobile", ["Swift", "SwiftUI", "UIKit", "Objective-C", "Dart", "Flutter", "Kotlin", "Jetpack Compose", "React Native"]], ["Apple platform", ["Swift Concurrency", "Combine", "Core Image", "Core Audio", "AppKit", "XCTest", "APNs", "App Store Connect / TestFlight"]], ["Systems & integration", ["Native bridges & platform channels", "UART", "IoT telemetry", "OTA firmware", "Amazon SNS", "MVVM", "Clean Architecture", "Dependency Injection"]], ["Backend, cloud & tooling", ["Node.js", "Go", "Express", "REST APIs", "PostgreSQL", "Firebase", "Google Cloud", "SQLite / MongoDB", "Docker", "Git", "CI/CD", "GitHub Actions", "Fastlane", "Jira", "Figma", "Postman"]]] as const;
@@ -123,7 +123,7 @@ function Skills({ close }: { close: () => void }) {
 function Contact({ close }: { close: () => void }) {
   const [copied, setCopied] = useState(false);
   const copyEmail = async () => { await navigator.clipboard?.writeText("agam.airi@outlook.com"); setCopied(true); window.setTimeout(() => setCopied(false), 1800); };
-  return <Chrome title="Contact" onClose={close}><div className="contact-hero"><span className="availability-dot" /><p>OPEN TO MOBILE, iOS & SOFTWARE ENGINEERING ROLES</p><h2>Let’s build something useful.</h2><span>Based in Toronto · Open to on-site, hybrid, or remote roles across Canada.</span></div><div className="contact-actions"><a href="mailto:agam.airi@outlook.com" className="primary-action">Write an email <span>↗</span></a><button onClick={copyEmail} className="secondary-action">{copied ? "Email copied" : "Copy email"}<span>{copied ? "✓" : "⌘"}</span></button><a href="/Agam_Airi_Resume.pdf" download className="secondary-action">Download résumé <span>↓</span></a></div><div className="contact-list"><a href="https://www.linkedin.com/in/agam-airi" target="_blank" rel="noreferrer"><span className="social-icon linkedin">in</span><div><b>LinkedIn</b><small>linkedin.com/in/agam-airi</small></div><i>↗</i></a><a href="https://github.com/agamairi" target="_blank" rel="noreferrer"><span className="social-icon github">GH</span><div><b>GitHub</b><small>github.com/agamairi</small></div><i>↗</i></a></div><p className="contact-note">I usually reply within one business day.</p></Chrome>;
+  return <Chrome title="Contact & résumé" onClose={close}><div className="contact-hero"><span className="availability-dot" /><p>OPEN TO MOBILE, iOS & SOFTWARE ENGINEERING ROLES</p><h2>Let’s build something useful.</h2><span>Based in Toronto · Open to on-site, hybrid, or remote roles across Canada.</span></div><div className="contact-actions"><a href="mailto:agam.airi@outlook.com" className="primary-action">Write an email <span>↗</span></a><button onClick={copyEmail} className="secondary-action">{copied ? "Email copied" : "Copy email"}<span>{copied ? "✓" : "⌘"}</span></button><a href="/Agam_Airi_Resume.pdf" download className="secondary-action">Download résumé <span>↓</span></a></div><div className="contact-list"><a href="https://www.linkedin.com/in/agam-airi" target="_blank" rel="noreferrer"><span className="social-icon linkedin">in</span><div><b>LinkedIn</b><small>linkedin.com/in/agam-airi</small></div><i>↗</i></a><a href="https://github.com/agamairi" target="_blank" rel="noreferrer"><span className="social-icon github">GH</span><div><b>GitHub</b><small>github.com/agamairi</small></div><i>↗</i></a></div><p className="contact-note">I usually reply within one business day.</p></Chrome>;
 }
 
 export default function Home() {
@@ -157,9 +157,9 @@ export default function Home() {
 
             <section className="ipad-home" aria-hidden={active !== null}>
               <header className="ipad-greeting">
-                <div><p>{date || "Monday, August 24"}</p><h1>Good evening, <span>Agam.</span></h1></div>
+                <div><p>{date || "Monday, August 24"}</p><h1>Hi &mdash; I&rsquo;m <span>Agam.</span></h1><p className="ipad-start-here">Start here: 3+ years shipping iOS and cross-platform mobile products for hardware-connected systems.</p></div>
                 <div className="ipad-greeting-side">
-                  <span className="ipad-avail"><i /> Available · Toronto</span>
+                  <span className="ipad-avail"><i /> Open to roles across Canada</span>
                   <QuickLinks />
                 </div>
               </header>
@@ -172,6 +172,7 @@ export default function Home() {
                 <button className="ipad-widget ipad-current" onClick={() => setActive("work")}>
                   <div className="widget-top"><span className="widget-chip light">NOW</span><span>↗</span></div>
                   <div><p>Mobile Application Developer</p><h3>Solaris Robots — robotics, IoT &amp; airport operations.</h3></div>
+                  <p className="current-collab">Mentored 5+ developers · led peer review of AI-generated code.</p>
                   <div className="current-tags"><span>Feb 2024 – now</span><span>300+ staff</span><span>1K+ events/day</span></div>
                 </button>
                 <div className="ipad-widget ipad-stats" role="button" tabIndex={0} onClick={() => setActive("about")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("about"); } }} {...statsRot.holdProps}>
@@ -189,6 +190,10 @@ export default function Home() {
                     <h3>{featuredBuilds[projRot.index].name}</h3>
                     <p>{featuredBuilds[projRot.index].desc}</p>
                   </div>
+                  <div className="project-proof-links" onClick={(e) => e.stopPropagation()}>
+                    <a href="https://github.com/agamairi/moviebrowser" target="_blank" rel="noreferrer" aria-label="Open MovieBrowser on GitHub in a new tab" onClick={(e) => e.stopPropagation()}>MovieBrowser ↗</a>
+                    <a href="https://github.com/agamairi/A.I.R.I" target="_blank" rel="noreferrer" aria-label="Open A.I.R.I on GitHub in a new tab" onClick={(e) => e.stopPropagation()}>A.I.R.I ↗</a>
+                  </div>
                   <div className="ipad-proj-actions">
                     <a href={featuredBuilds[projRot.index].href} target="_blank" rel="noreferrer" onClick={(e) => e.stopPropagation()}>{featuredBuilds[projRot.index].cta}</a>
                     <button type="button" onClick={() => setActive("projects")}>All projects →</button>
@@ -198,14 +203,20 @@ export default function Home() {
                 <div className="ipad-widget ipad-stack" role="button" tabIndex={0} onClick={() => setActive("skills")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("skills"); } }} {...stackRot.holdProps}>
                   <div className="widget-top"><span className="widget-chip">CORE STACK</span><span>↗</span></div>
                   <div className="stack-cloud"><span>Flutter</span><span>Swift</span><span>SwiftUI</span><span>Kotlin</span><span>Go</span><span>IoT</span></div>
+                  <p className="stack-proof">Native bridges · UART · OTA · APNs · TestFlight / Play</p>
                   <div className="rot-depth">
                     <p key={stackRot.index} className="rot-fade rot-line">{stackHighlights[stackRot.index]}</p>
                     <Dots count={stackHighlights.length} index={stackRot.index} onPick={stackRot.setIndex} />
                   </div>
                 </div>
                 <div className="ipad-widget ipad-apps">
-                  <div className="widget-top"><span className="widget-chip">APPS</span><span className="apps-hint">Click to explore</span></div>
+                  <div className="widget-top"><span className="widget-chip">APPS</span><span className="apps-hint">Details &amp; proof</span></div>
                   <div className="ipad-app-grid">{apps.map((app) => <AppIcon app={app} key={app.id} />)}</div>
+                  <div className="ipad-apps-links" onClick={(e) => e.stopPropagation()}>
+                    <a href="/Agam_Airi_Resume.pdf" download aria-label="Download résumé (PDF)" onClick={(e) => e.stopPropagation()}>Résumé ↓</a>
+                    <a href="https://github.com/agamairi" target="_blank" rel="noreferrer" aria-label="Open GitHub in a new tab" onClick={(e) => e.stopPropagation()}>GitHub ↗</a>
+                    <a href="https://www.linkedin.com/in/agam-airi" target="_blank" rel="noreferrer" aria-label="Open LinkedIn in a new tab" onClick={(e) => e.stopPropagation()}>LinkedIn ↗</a>
+                  </div>
                 </div>
                 <button className="ipad-widget ipad-contact" onClick={() => setActive("contact")}>
                   <div><span className="widget-chip light">LET&apos;S TALK</span><h3>Have a mobile, iOS, or software engineering role?</h3></div><span className="contact-bubble">↗</span>
@@ -223,7 +234,7 @@ export default function Home() {
                   <button onClick={() => setActive("about")}>View profile <span>→</span></button>
                 </div>
                 <div className="app-grid">{apps.slice(0, 4).map((app) => <AppIcon app={app} key={app.id} />)}</div>
-                <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Building mobile systems at Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
+                <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Mobile Application Developer · Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
               </section>
               <section className="home-page second-page"><div className="second-title"><span>SELECTED</span><h2>Project shelf</h2></div><div className="mini-project-grid">{projects.slice(0, 4).map((project) => <a href={project.href} target="_blank" rel="noreferrer" key={project.name}><span className="project-icon" style={{ "--project-color": project.tint } as React.CSSProperties}>{project.icon}</span><b>{project.name}</b><small>{project.tag}</small></a>)}</div><button className="all-projects" onClick={() => setActive("projects")}>Browse all projects <span>→</span></button><div className="app-grid single"><AppIcon app={apps[4]} /></div></section>
             </div>
