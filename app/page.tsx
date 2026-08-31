@@ -5,14 +5,14 @@ import { useEffect, useMemo, useState } from "react";
 type AppId = "about" | "work" | "projects" | "skills" | "contact";
 
 const projects = [
-  { name: "MovieBrowser", tag: "Native iOS (Swift/SwiftUI)", tint: "#29335C", icon: "MB", copy: "A SwiftUI MVVM app with protocol-first services, layered caching, dependency injection, Core Image gradients, and XCTest coverage.", stack: ["SwiftUI", "Combine", "Core Image", "XCTest"], href: "https://github.com/agamairi/moviebrowser" },
+  { name: "MovieBrowser", tag: "Native iOS (Swift/SwiftUI)", tint: "#29335C", icon: "MB", copy: "A SwiftUI MVVM app with a protocol-first service layer, multi-layer caching (NSCache + URLCache), dependency injection, Core Image gradients, and XCTest coverage.", stack: ["SwiftUI", "Combine", "Core Image", "XCTest"], href: "https://github.com/agamairi/moviebrowser" },
   { name: "WeatherNow", tag: "Native iOS (SwiftUI)", tint: "#669BBC", icon: "WN", copy: "A native SwiftUI weather app with URLSession, Codable JSON, MVVM, search history, and App Store-ready loading and error states.", stack: ["SwiftUI", "URLSession", "Codable", "UserDefaults"], href: "https://github.com/agamairi/WeatherNow" },
   { name: "A.I.R.I", tag: "On-device AI (Flutter)", tint: "#E4572E", icon: "AI", copy: "A privacy-first Flutter app running local LLMs with on-device RAG, multimodal chat, voice, and an OpenAI-compatible LAN server.", stack: ["Flutter", "llama.cpp", "RAG", "TTS / STT"], href: "https://github.com/agamairi/A.I.R.I" },
-  { name: "forge_mvvm", tag: "Published Flutter package", tint: "#F3A712", icon: "FM", copy: "An MVVM and Clean Architecture framework with runtime dependency-graph validation, typed async primitives, and a feature-scaffolding CLI.", stack: ["Dart", "Flutter", "MVVM", "CLI"], href: "https://pub.dev/packages/forge_mvvm" },
-  { name: "PrepStation", tag: "Desktop video editor", tint: "#A8C686", icon: "PS", copy: "A Flutter video editor for iOS and macOS with a multi-track timeline, 30+ transitions, keyframes, FFmpeg export, and Apple Vision background removal.", stack: ["Flutter", "FFmpeg", "Apple Vision", "macOS"], href: "https://github.com/agamairi/prepstation-video-editor" },
-  { name: "DreamAiri", tag: "Agentic game-dev assistant", tint: "#E4572E", icon: "DA", copy: "A full-stack game-development coding assistant with a Go backend, real-time tool execution in Godot, and multi-turn LLM workflows.", stack: ["Go", "WebSocket", "PostgreSQL", "Godot"], href: "https://github.com/agamairi/dreamairi-plugin" },
-  { name: "AI Council", tag: "Multi-LLM research platform", tint: "#669BBC", icon: "AC", copy: "A fully offline Flask and Socket.IO platform for local LLM debate, web research, document analysis, and tool use.", stack: ["Python", "Flask", "Socket.IO", "Local LLMs"], href: "https://github.com/agamairi/ai-council" },
-  { name: "sfxr macOS port", tag: "Native macOS (Objective-C++)", tint: "#29335C", icon: "SF", copy: "A native Cocoa and AppKit port of the sfxr sound-effect generator with Core Audio, WAV export, .sfs load/save, and universal binaries.", stack: ["Objective-C++", "AppKit", "Core Audio", "Cocoa"], href: "https://github.com/agamairi/sfxr-mac-port" },
+  { name: "forge_mvvm", tag: "Published Flutter package", tint: "#F3A712", icon: "FM", copy: "An MVVM and Clean Architecture framework on pub.dev with runtime dependency-graph validation, typed async primitives, and a feature-scaffolding CLI.", stack: ["Dart", "Flutter", "MVVM", "CLI"], href: "https://pub.dev/packages/forge_mvvm" },
+  { name: "PrepStation", tag: "Desktop video editor (iOS + macOS)", tint: "#A8C686", icon: "PS", copy: "A Flutter video editor for iOS and macOS with a multi-track timeline, 30+ transitions, keyframe animation, FFmpeg export, and Apple Vision background removal.", stack: ["Flutter", "FFmpeg", "Apple Vision", "macOS"], href: "https://github.com/agamairi/prepstation-video-editor" },
+  { name: "DreamAiri", tag: "Agentic game-dev assistant (full-stack)", tint: "#E4572E", icon: "DA", copy: "A full-stack AI coding assistant for game development with a Go backend, real-time tool execution in Godot, and multi-turn LLM workflows.", stack: ["Go", "WebSocket", "PostgreSQL", "Godot"], href: "https://github.com/agamairi/dreamairi-plugin" },
+  { name: "AI Council", tag: "Multi-LLM research platform (Python)", tint: "#669BBC", icon: "AC", copy: "A fully offline Flask and Socket.IO platform for local LLM debate, web research, document analysis, and tool use.", stack: ["Python", "Flask", "Socket.IO", "Local LLMs"], href: "https://github.com/agamairi/ai-council" },
+  { name: "sfxr macOS port", tag: "Native macOS (Objective-C++)", tint: "#29335C", icon: "SF", copy: "A native Cocoa and AppKit port of the classic sfxr sound-effect generator with Core Audio, WAV export, .sfs load/save, and universal binaries.", stack: ["Objective-C++", "AppKit", "Core Audio", "Cocoa"], href: "https://github.com/agamairi/sfxr-mac-port" },
 ];
 
 const apps: { id: AppId; label: string; color: string; glyph: string }[] = [
@@ -33,10 +33,10 @@ function Chrome({ title, onClose, children }: { title: string; onClose: () => vo
 
 function About({ close }: { close: () => void }) {
   return <Chrome title="About" onClose={close}>
-    <div className="profile-hero"><div className="monogram">AA</div><div><p className="eyebrow">Mobile application developer · iOS developer</p><h2>Agam Airi</h2><p>Toronto, Canada</p></div></div>
+    <div className="profile-hero"><div className="monogram">AA</div><div><p className="eyebrow">Mobile Application Developer · iOS Developer · Software Engineer</p><h2>Agam Airi</h2><p>Toronto, Canada</p></div></div>
     <div className="intro-card"><p>I build mobile software that bridges custom hardware, on-device AI, and polished UX—from native integration through production release.</p></div>
     <div className="stats-grid"><div><strong>3+</strong><span>years building</span></div><div><strong>10+</strong><span>apps shipped</span></div><div><strong>30%</strong><span>faster load times</span></div><div><strong>1K+</strong><span>daily events</span></div></div>
-    <section className="content-section"><p className="section-label">HOW I WORK</p><h3>Native depth. Cross-platform speed.</h3><p>My core stack is Flutter, Swift, SwiftUI, and Kotlin. I own clean, tested software from native bridges and hardware integration to the App Store, Google Play, and enterprise MDM.</p></section>
+    <section className="content-section"><p className="section-label">HOW I WORK</p><h3>Native depth. Cross-platform speed.</h3><p>My core stack is Flutter, Swift, SwiftUI, and Kotlin, alongside Go and Node.js backend services. I own clean, tested software from native bridges and hardware integration to the App Store, Google Play, and enterprise MDM.</p></section>
     <section className="content-section education-card"><p className="section-label">EDUCATION</p><div className="education-row"><span>2022—2023</span><div><b>Computer Programming</b><p>Seneca College · Toronto</p></div></div><div className="education-row"><span>2018—2021</span><div><b>BBA, IT Specialization</b><p>Sardar Patel University</p></div></div></section>
   </Chrome>;
 }
@@ -97,7 +97,7 @@ export default function Home() {
               <div className="ipad-grid">
                 <button className="ipad-widget ipad-profile" onClick={() => setActive("about")}>
                   <div className="widget-top"><span className="mini-avatar">AA</span><span className="widget-chip">PROFILE</span></div>
-                  <div><p>Mobile engineer</p><h2>Apps that connect<br />software to <em>the real world.</em></h2></div>
+                  <div><p>Mobile · iOS · Software Engineer</p><h2>Apps that connect<br />software to <em>the real world.</em></h2></div>
                   <span className="widget-link">Open About <b>↗</b></span>
                 </button>
                 <button className="ipad-widget ipad-current" onClick={() => setActive("work")}>
@@ -112,26 +112,26 @@ export default function Home() {
                 </button>
                 <button className="ipad-widget ipad-project" onClick={() => setActive("projects")}>
                   <div className="project-orbit"><span>AI</span><i /><i /><i /></div>
-                  <div><span className="widget-chip light">FEATURED BUILD</span><h3>A.I.R.I</h3><p>Your private AI, running fully on-device.</p></div>
+                  <div><span className="widget-chip light">FEATURED BUILD</span><h3>A.I.R.I</h3><p>On-device LLMs, local RAG &amp; LAN API server.</p></div>
                   <b>Explore project →</b>
                 </button>
                 <button className="ipad-widget ipad-stack" onClick={() => setActive("skills")}>
                   <div className="widget-top"><span className="widget-chip">CORE STACK</span><span>↗</span></div>
-                  <div className="stack-cloud"><span>Flutter</span><span>Swift</span><span>Kotlin</span><span>RAG</span><span>Go</span><span>IoT</span></div>
+                  <div className="stack-cloud"><span>Flutter</span><span>Swift</span><span>SwiftUI</span><span>Kotlin</span><span>Go</span><span>IoT</span></div>
                 </button>
                 <div className="ipad-widget ipad-apps">
                   <div className="widget-top"><span className="widget-chip">APPS</span><span className="apps-hint">Click to explore</span></div>
                   <div className="ipad-app-grid">{apps.map((app) => <AppIcon app={app} key={app.id} />)}</div>
                 </div>
                 <button className="ipad-widget ipad-contact" onClick={() => setActive("contact")}>
-                  <div><span className="widget-chip light">LET&apos;S TALK</span><h3>Have a role or an ambitious mobile idea?</h3></div><span className="contact-bubble">↗</span>
+                  <div><span className="widget-chip light">LET&apos;S TALK</span><h3>Have a mobile, iOS, or software engineering role?</h3></div><span className="contact-bubble">↗</span>
                 </button>
               </div>
             </section>
 
             <div className={`home-pages page-${page}`} aria-hidden={active !== null}>
               <section className="home-page main-page">
-                <div className="identity-widget"><div className="widget-top"><span className="mini-avatar">AA</span><span className="available"><i /> AVAILABLE</span></div><h2>Agam Airi</h2><p>Mobile engineer building at the edge of apps, hardware, and AI.</p><button onClick={() => setActive("about")}>View profile <span>→</span></button></div>
+                <div className="identity-widget"><div className="widget-top"><span className="mini-avatar">AA</span><span className="available"><i /> AVAILABLE</span></div><h2>Agam Airi</h2><p>Mobile, iOS, and software developer bridging hardware, on-device AI, and scalable systems.</p><button onClick={() => setActive("about")}>View profile <span>→</span></button></div>
                 <div className="app-grid">{apps.slice(0, 4).map((app) => <AppIcon app={app} key={app.id} />)}</div>
                 <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Building mobile systems at Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
               </section>
