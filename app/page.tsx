@@ -17,10 +17,10 @@ const projects = [
   { name: "job-swipe", tag: "Job-search app · Flutter", tint: "#A8C686", icon: "JS", copy: "A Flutter job-search app with a swipe-based browsing interface.", stack: ["Flutter", "Dart"], href: "https://github.com/agamairi/job-swipe" },
 ];
 
-const proofStats = [
-  { num: "30%", unit: "faster", desc: "Reduced SolarX application and data load times through profiling and production debugging." },
-  { num: "300+", unit: "concurrent staff", desc: "PRMGO migration to Flutter + Node.js for Toronto Pearson operations." },
-  { num: "1K+", unit: "daily events", desc: "Passenger-tracking events in an airport-operations mobile system." },
+const skillAtAGlance = [
+  { domain: "Native iOS", technologies: ["Swift", "SwiftUI", "UIKit", "XCTest"] },
+  { domain: "Cross-platform", technologies: ["Flutter", "Kotlin", "Platform channels"] },
+  { domain: "Systems & backend", technologies: ["Native bridges", "IoT / OTA", "Go", "Node.js"] },
 ];
 
 const featuredBuilds = [
@@ -76,16 +76,16 @@ function QuickLinks({ className = "" }: { className?: string }) {
   );
 }
 
-const apps: { id: AppId; label: string; color: string; glyph: string }[] = [
-  { id: "about", label: "Profile", color: "#669BBC", glyph: "AA" },
-  { id: "work", label: "Experience", color: "#F3A712", glyph: "EX" },
-  { id: "projects", label: "Work samples", color: "#E4572E", glyph: "PR" },
-  { id: "skills", label: "Skills", color: "#A8C686", glyph: "SK" },
-  { id: "contact", label: "Contact & résumé", color: "#29335C", glyph: "CO" },
+const apps: { id: AppId; label: string; color: string; glyph: string; icon: React.ReactNode }[] = [
+  { id: "about", label: "Profile", color: "#669BBC", glyph: "AA", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c.8-4 3.5-6 8-6s7.2 2 8 6" /></svg> },
+  { id: "work", label: "Experience", color: "#F3A712", glyph: "EX", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" /></svg> },
+  { id: "projects", label: "Work samples", color: "#E4572E", glyph: "PR", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" /><path d="m10 11-2 2 2 2M14 11l2 2-2 2" /></svg> },
+  { id: "skills", label: "Skills", color: "#A8C686", glyph: "SK", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m12 3 8 4-8 4-8-4 8-4ZM4 12l8 4 8-4M4 17l8 4 8-4" /></svg> },
+  { id: "contact", label: "Contact & résumé", color: "#29335C", glyph: "CO", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg> },
 ];
 
 function AppIcon({ app, small = false }: { app: (typeof apps)[number]; small?: boolean }) {
-  return <button className={`app-button ${small ? "small" : ""}`} onClick={() => window.dispatchEvent(new CustomEvent("open-app", { detail: app.id }))} aria-label={`Open ${app.label}`}><span className="app-icon" style={{ "--icon-color": app.color } as React.CSSProperties}><span>{app.glyph}</span></span>{!small && <span className="app-label">{app.label}</span>}</button>;
+  return <button className={`app-button ${small ? "small" : ""}`} onClick={() => window.dispatchEvent(new CustomEvent("open-app", { detail: app.id }))} aria-label={`Open ${app.label}`}><span className="app-icon" style={{ "--icon-color": app.color, color: "#fff" } as React.CSSProperties}>{app.icon}</span>{!small && <span className="app-label">{app.label}</span>}</button>;
 }
 
 function Chrome({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
@@ -96,7 +96,7 @@ function About({ close }: { close: () => void }) {
   return <Chrome title="Profile" onClose={close}>
     <div className="profile-hero"><div className="monogram">AA</div><div><p className="eyebrow">Mobile Application Developer · iOS Developer · Software Engineer</p><h2>Agam Airi</h2><p>Toronto, Canada</p></div></div>
     <div className="intro-card"><p>I build mobile software that bridges custom hardware, on-device AI, and polished UX—from native integration through production release.</p></div>
-    <div className="stats-grid"><div><strong>3+</strong><span>years building</span></div><div><strong>10+</strong><span>apps shipped</span></div><div><strong>30%</strong><span>faster load times</span></div><div><strong>1K+</strong><span>daily events</span></div></div>
+    <div className="stats-grid"><div><strong>3+</strong><span>years building</span></div><div><strong>10+</strong><span>apps shipped</span></div><div><strong>5+</strong><span>developers mentored</span></div><div><strong>3</strong><span>release channels shipped</span></div></div>
     <section className="content-section"><p className="section-label">HOW I WORK</p><h3>Native depth. Cross-platform speed.</h3><p>My core stack is Flutter, Swift, SwiftUI, and Kotlin, alongside Go and Node.js backend services. I own clean, tested software from native bridges and hardware integration to the App Store, Google Play, and enterprise MDM.</p></section>
     <section className="content-section education-card"><p className="section-label">EDUCATION</p><div className="education-row"><span>2022—2023</span><div><b>Computer Programming</b><p>Seneca College · Toronto</p></div></div><div className="education-row"><span>2018—2021</span><div><b>BBA, IT Specialization</b><p>Sardar Patel University</p></div></div></section>
   </Chrome>;
@@ -104,7 +104,7 @@ function About({ close }: { close: () => void }) {
 
 function Work({ close }: { close: () => void }) {
   return <Chrome title="Experience" onClose={close}>
-    <div className="screen-heading"><p className="eyebrow">Selected work</p><h2>Shipping software that talks to the real world.</h2></div>
+    <div className="screen-heading"><p className="eyebrow">Selected work</p><h2>Mobile systems for<br />robots, IoT, and airports.</h2></div>
     <article className="timeline-card current"><div className="timeline-top"><span className="company-mark solaris">S</span><div><h3>Solaris Robots</h3><p>Mobile Application Developer</p></div><span className="date">2024—NOW</span></div><p className="role-summary">Owning iOS and Android products for robotics, IoT, and airport operations—from native integration to production release.</p><ul><li>Led the PRMGO migration to Flutter and Node.js, supporting 300+ concurrent Toronto Pearson staff and 1,000+ daily passenger-tracking events.</li><li>Built a Kotlin bridge for low-level UART control of custom Android hardware, battery modules, and ToF sensors; engineered a Swift bridge for IoT telemetry and OTA firmware updates.</li><li>Set up APNs push delivery through Amazon SNS and shipped releases across TestFlight, the App Store, Google Play, and enterprise MDM.</li><li>Reduced SolarX application and data load times by 30% through profiling and production debugging.</li><li>Sustained quality with unit and integration testing, technical documentation, clean code, OOP fundamentals, and state management.</li><li>Led peer review of AI-generated code, auditing security, structure, and integrity to flag vulnerabilities and guide architectural fixes.</li></ul></article>
     <article className="timeline-card"><div className="timeline-top"><span className="company-mark independent">A</span><div><h3>Independent</h3><p>Mobile Developer & Mentor</p></div><span className="date">2023—2024</span></div><p className="role-summary">Built production-grade mobile and web applications while mentoring developers in architecture, OOP, and data structures.</p><ul><li>Shipped 10+ projects across Flutter, Swift, SwiftUI, Objective-C, and React.</li><li>Mentored 5+ junior developers, improving problem-solving and code quality.</li></ul></article>
   </Chrome>;
@@ -132,7 +132,7 @@ export default function Home() {
   const [date, setDate] = useState("");
   const [page, setPage] = useState(0);
 
-  const statsRot = useRotator(proofStats.length, 7000);
+  const statsRot = useRotator(skillAtAGlance.length, 7000);
   const projRot = useRotator(featuredBuilds.length, 8000);
   const stackRot = useRotator(stackHighlights.length, 8000);
 
@@ -166,7 +166,7 @@ export default function Home() {
               <div className="ipad-grid">
                 <button className="ipad-widget ipad-profile" onClick={() => setActive("about")}>
                   <div className="widget-top"><span className="mini-avatar">AA</span><span className="widget-chip">PROFILE</span></div>
-                  <div><p>Agam Airi · Toronto, ON · 3+ yrs</p><h2>Apps that connect<br />software to <em>the real world.</em></h2><p className="ipad-profile-sub">Mobile Application Developer · iOS Developer · Software Engineer</p></div>
+                  <div><p>Agam Airi · Toronto, ON · 3+ yrs</p><h2>Mobile apps for<br /><em>hardware + AI.</em></h2><p className="ipad-profile-sub">Mobile Application Developer · iOS Developer · Software Engineer</p></div>
                   <span className="widget-link">Open About <b>↗</b></span>
                 </button>
                 <button className="ipad-widget ipad-current" onClick={() => setActive("work")}>
@@ -175,13 +175,12 @@ export default function Home() {
                   <p className="current-collab">Mentored 5+ developers · led peer review of AI-generated code.</p>
                   <div className="current-tags"><span>Feb 2024 – now</span><span>300+ staff</span><span>1K+ events/day</span></div>
                 </button>
-                <div className="ipad-widget ipad-stats" role="button" tabIndex={0} onClick={() => setActive("about")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("about"); } }} {...statsRot.holdProps}>
-                  <span className="widget-chip">PROOF AT A GLANCE</span>
+                <div className="ipad-widget ipad-stats" role="button" tabIndex={0} onClick={() => setActive("skills")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("skills"); } }} {...statsRot.holdProps}>
+                  <span className="widget-chip">SKILLS AT A GLANCE</span>
                   <div key={statsRot.index} className="rot-fade">
-                    <div className="stat-ring"><strong>{proofStats[statsRot.index].num}</strong><span>{proofStats[statsRot.index].unit}</span></div>
-                    <p className="rot-line">{proofStats[statsRot.index].desc}</p>
+                    <div className="skills-at-glance"><strong>{skillAtAGlance[statsRot.index].domain}</strong><div className="skill-glance-pills">{skillAtAGlance[statsRot.index].technologies.map((technology) => <span key={technology}>{technology}</span>)}</div></div>
                   </div>
-                  <Dots count={proofStats.length} index={statsRot.index} onPick={statsRot.setIndex} />
+                  <Dots count={skillAtAGlance.length} index={statsRot.index} onPick={statsRot.setIndex} />
                 </div>
                 <div className="ipad-widget ipad-project" {...projRot.holdProps}>
                   <div className="project-orbit"><span>{featuredBuilds[projRot.index].mark}</span><i /><i /><i /></div>
@@ -241,7 +240,7 @@ export default function Home() {
 
             {!active && <>
               <div className="page-dots"><button className={page === 0 ? "active" : ""} onClick={() => setPage(0)} aria-label="Go to first home screen" /><button className={page === 1 ? "active" : ""} onClick={() => setPage(1)} aria-label="Go to second home screen" /></div>
-              <nav className="dock" aria-label="Quick launch">{apps.filter((app) => ["projects", "skills", "contact"].includes(app.id)).map((app) => <AppIcon app={app} small key={app.id} />)}<a className="app-button small" href="mailto:agam.airi@outlook.com" aria-label="Email Agam"><span className="app-icon mail-icon"><span>↗</span></span></a></nav>
+              <nav className="dock" aria-label="Quick launch">{apps.filter((app) => ["projects", "skills", "contact"].includes(app.id)).map((app) => <AppIcon app={app} small key={app.id} />)}<a className="app-button small" href="mailto:agam.airi@outlook.com" aria-label="Email Agam"><span className="app-icon mail-icon" style={{ color: "#fff" }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg></span></a></nav>
             </>}
             {ActiveApp}
             <button className="home-indicator" onClick={() => setActive(null)} aria-label="Return home" />

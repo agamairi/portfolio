@@ -61,3 +61,4 @@ codex*.log
 # tsc incremental cache
 tsconfig.tsbuildinfo
 *.tsbuildinfo
+/DESIGN_DECISIONS.md
