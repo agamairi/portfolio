@@ -85,10 +85,10 @@
   .portfolio-shell{background:#202947}
   .phone-frame{background:#20232d}
   .phone-screen{background:#29335C}
-  .identity-widget{background:rgba(102,155,188,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 14px 28px rgba(12,18,40,.2)}
-  .featured-widget{background:rgba(228,87,46,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
-  .mini-project-grid a{background:rgba(41,51,92,.68);box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
-  .all-projects{background:rgba(41,51,92,.72);box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
+  .identity-widget{background:#34406b;backdrop-filter:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.24),0 14px 28px rgba(12,18,40,.2)}
+  .featured-widget{background:linear-gradient(145deg, #E4572E, #C23F23);backdrop-filter:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.18)}
+  .mini-project-grid a{background:#29335C;backdrop-filter:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.16)}
+  .all-projects{background:#29335C;backdrop-filter:none;box-shadow:inset 0 1px 0 rgba(255,255,255,.14)}
   .app-window{background:rgba(246,242,231,.96)}
 }
 
@@ -243,7 +243,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(135deg, rgba(243,167,18,0.25), rgba(244,185,59,0.15));
+    background: var(--gold);
+    backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     padding: 14px;
@@ -251,6 +252,10 @@
     min-height: 128px;
     text-align: center;
     align-items: center;
+  }
+  .mobile-glance .widget-chip {
+    color: var(--navy);
+    background: rgba(41,51,92,.14);
   }
   .mobile-glance-body {
     display: flex;
@@ -262,8 +267,18 @@
   }
   .mobile-glance-body strong {
     font-size: 14px;
-    color: #fff;
+    color: var(--navy);
     letter-spacing: -0.02em;
+  }
+  .mobile-glance .skill-glance-pills span {
+    background: #fff;
+    color: var(--navy);
+  }
+  .mobile-glance .rot-dots button {
+    background: rgba(41,51,92,.28);
+  }
+  .mobile-glance .rot-dots button.on {
+    background: var(--navy);
   }
   
   .mobile-featured {
@@ -272,7 +287,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    background: linear-gradient(135deg, rgba(102,155,188,0.25), rgba(41,51,92,0.4));
+    background: var(--blue);
+    backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
     padding: 14px;
@@ -289,7 +305,7 @@
   }
   .mobile-featured-body p {
     font-size: 11px;
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(255, 255, 255, 0.9);
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -364,7 +380,8 @@
     align-items: center;
     width: 100%;
     margin-top: 14px;
-    background: rgba(41, 51, 92, 0.8);
+    background: #29335C;
+    backdrop-filter: none;
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 18px;
     padding: 12px 16px;
