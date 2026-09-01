@@ -64,3 +64,6 @@ tsconfig.tsbuildinfo
 /DESIGN_DECISIONS.md
 /MOBILE_FIRST_IMPRESSION.md
 /MOBILE_FIX_PLAN.md
+
+# OpenAI Sites tooling (unused; GitHub Pages host)
+/.openai/
