@@ -205,6 +205,23 @@
     padding-bottom: max(132px, calc(124px + env(safe-area-inset-bottom)));
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    direction: rtl;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255,255,255,.4) transparent;
+  }
+  .home-page.main-page > * {
+    direction: ltr;
+    flex-shrink: 0;
+  }
+  .home-page.main-page::-webkit-scrollbar {
+    width: 6px;
+  }
+  .home-page.main-page::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,.4);
+    border-radius: 3px;
+  }
+  .home-page.main-page::-webkit-scrollbar-track {
+    background: transparent;
   }
   @media (max-height: 720px) {
     .home-page.main-page {
@@ -220,49 +237,78 @@
     white-space: normal;
   }
 
-  .mobile-skills {
+  .mobile-glance {
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    margin-top: auto;
-    background: linear-gradient(135deg, rgba(41, 51, 92, 0.7), rgba(102, 155, 188, 0.3));
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(243,167,18,0.25), rgba(244,185,59,0.15));
     border: 1px solid rgba(255, 255, 255, 0.15);
     border-radius: 20px;
-    padding: 16px;
+    padding: 14px;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    min-height: 128px;
+    text-align: center;
+    align-items: center;
   }
-  @media (max-height: 720px) {
-    .mobile-skills {
-      margin-top: 0;
-    }
-  }
-  .mobile-skills-title {
-    font-size: 10px;
-    color: #86bdfb;
-    letter-spacing: 0.16em;
-    font-weight: 800;
-  }
-  .mobile-skill-row {
+  .mobile-glance-body {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin: 8px 0;
   }
-  .mobile-skill-row strong {
-    font-size: 13px;
+  .mobile-glance-body strong {
+    font-size: 14px;
+    color: #fff;
+    letter-spacing: -0.02em;
+  }
+  
+  .mobile-featured {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: linear-gradient(135deg, rgba(102,155,188,0.25), rgba(41,51,92,0.4));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    padding: 14px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    min-height: 128px;
+  }
+  .mobile-featured-body {
+    margin: 8px 0;
+  }
+  .mobile-featured-body h3 {
+    font-size: 16px;
+    margin: 0 0 4px;
     color: #fff;
   }
-  .mobile-skill-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
+  .mobile-featured-body p {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
-  .mobile-skill-chips span {
-    padding: 5px 8px;
-    border-radius: 8px;
-    background: rgba(255, 255, 255, 0.15);
+  .mobile-featured-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 8px;
+    margin-top: 4px;
+  }
+  .mobile-featured-actions a {
+    color: #fff;
     font-size: 10px;
     font-weight: 700;
-    color: #fff;
+    text-decoration: none;
   }
 
   .mobile-resume-btn {
@@ -346,7 +392,8 @@
   .identity-widget .mini-avatar { width: 38px; height: 38px; }
   .identity-widget h2 { font-size: 30px; margin: 8px 0 6px; }
   .identity-widget .mobile-role-line { margin: 2px 0; font-size: 14px; color: #fff; font-weight: 700; }
-  .identity-widget .mobile-summary { color: rgba(255, 255, 255, 0.75); font-size: 12px; line-height: 1.4; margin: 4px 0 0; }
+  .identity-widget .mobile-tagline { color: rgba(255, 255, 255, 0.75); font-size: 13px; line-height: 1.4; margin: 4px 0 0; }
+  .identity-widget .mobile-tagline em { font-style: normal; color: var(--coral); }
   .identity-widget .id-links { gap: 5px; margin-top: 12px; }
   .identity-widget .id-links a { font-size: 11px; padding: 6px 9px; }
   .identity-widget button { margin-top: 12px; font-size: 13px; }

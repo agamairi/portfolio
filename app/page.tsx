@@ -259,22 +259,34 @@ export default function Home() {
                   <div className="widget-top"><span className="mini-avatar">AA</span><span className="available"><i /> Open to roles across Canada</span></div>
                   <h2>Agam Airi</h2>
                   <p className="mobile-role-line">Mobile Application Developer · iOS Developer · Software Engineer</p>
-                  <p className="mobile-summary">Toronto, ON · 3+ years · native hardware, on-device AI, production release.</p>
+                  <p className="mobile-tagline">Mobile apps built to <em key={headRot.index} className="rot-fade">{headlineTail[headRot.index]}</em></p>
                   <QuickLinks className="id-links" />
                   <button onClick={() => setActive("about")}>View profile <span>→</span></button>
                 </div>
                 <div className="app-grid">{apps.slice(0, 4).map((app) => <AppIcon app={app} key={app.id} />)}</div>
                 <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Mobile Application Developer · Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
-                <div className="mobile-skills" aria-label="Skills at a glance">
-                  <span className="mobile-skills-title">SKILLS AT A GLANCE</span>
-                  {skillAtAGlance.map((group) => (
-                    <div className="mobile-skill-row" key={group.domain}>
-                      <strong>{group.domain}</strong>
-                      <div className="mobile-skill-chips">
-                        {group.technologies.map((t) => <span key={t}>{t}</span>)}
-                      </div>
+                <div className="mobile-glance" {...statsRot.holdProps}>
+                  <span className="widget-chip">SKILLS AT A GLANCE</span>
+                  <div key={statsRot.index} className="rot-fade mobile-glance-body">
+                    <strong>{skillAtAGlance[statsRot.index].domain}</strong>
+                    <div className="skill-glance-pills">
+                      {skillAtAGlance[statsRot.index].technologies.map((t) => <span key={t}>{t}</span>)}
                     </div>
-                  ))}
+                  </div>
+                  <Dots count={skillAtAGlance.length} index={statsRot.index} onPick={statsRot.setIndex} />
+                  <RotProgress ms={7000} index={statsRot.index} paused={statsRot.paused} accent="var(--navy)" />
+                </div>
+                <div className="mobile-featured" {...projRot.holdProps}>
+                  <span className="widget-chip light">FEATURED BUILD</span>
+                  <div key={projRot.index} className="rot-fade mobile-featured-body">
+                    <h3>{featuredBuilds[projRot.index].name}</h3>
+                    <p>{featuredBuilds[projRot.index].desc}</p>
+                  </div>
+                  <div className="mobile-featured-actions">
+                    <a href={featuredBuilds[projRot.index].href} target="_blank" rel="noreferrer">{featuredBuilds[projRot.index].cta}</a>
+                    <Dots count={featuredBuilds.length} index={projRot.index} onPick={projRot.setIndex} />
+                  </div>
+                  <RotProgress ms={8000} index={projRot.index} paused={projRot.paused} accent="var(--gold)" />
                 </div>
                 <a className="mobile-resume-btn" href="/Agam_Airi_Resume.pdf" download aria-label="Download résumé PDF">Download résumé ↓</a>
                 <button type="button" className="mobile-page-cue" onClick={() => setPage(1)} aria-label="Swipe to see projects">Swipe to see projects →</button>
