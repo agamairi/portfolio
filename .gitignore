@@ -62,3 +62,5 @@ codex*.log
 tsconfig.tsbuildinfo
 *.tsbuildinfo
 /DESIGN_DECISIONS.md
+/MOBILE_FIRST_IMPRESSION.md
+/MOBILE_FIX_PLAN.md

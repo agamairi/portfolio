@@ -72,9 +72,9 @@ function Dots({ count, index, onPick }: { count: number; index: number; onPick: 
 function QuickLinks({ className = "" }: { className?: string }) {
   return (
     <nav className={`ipad-links ${className}`.trim()} onClick={(e) => e.stopPropagation()} aria-label="Quick links">
-      <a href="/Agam_Airi_Resume.pdf" download>Résumé</a>
-      <a href="https://github.com/agamairi" target="_blank" rel="noreferrer">GitHub</a>
-      <a href="https://www.linkedin.com/in/agam-airi" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a href="/Agam_Airi_Resume.pdf" download>Résumé ↓</a>
+      <a href="https://github.com/agamairi" target="_blank" rel="noreferrer">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/agam-airi" target="_blank" rel="noreferrer">LinkedIn ↗</a>
       <a href="mailto:agam.airi@outlook.com">Email</a>
     </nav>
   );
@@ -137,7 +137,6 @@ export default function Home() {
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [page, setPage] = useState(0);
-
   const headRot = useRotator(headlineTail.length, 3200);
   const statsRot = useRotator(skillAtAGlance.length, 7000);
   const projRot = useRotator(featuredBuilds.length, 8000);
@@ -145,6 +144,28 @@ export default function Home() {
 
   useEffect(() => { const tick = () => { const now = new Date(); setTime(new Intl.DateTimeFormat("en-CA", { hour: "numeric", minute: "2-digit" }).format(now)); setDate(new Intl.DateTimeFormat("en-CA", { weekday: "long", month: "long", day: "numeric" }).format(now)); }; tick(); const timer = window.setInterval(tick, 30000); const openApp = (event: Event) => setActive((event as CustomEvent<AppId>).detail); window.addEventListener("open-app", openApp); return () => { window.clearInterval(timer); window.removeEventListener("open-app", openApp); }; }, []);
   useEffect(() => { const keydown = (event: KeyboardEvent) => { if (event.key === "Escape") setActive(null); if (!active && event.key === "ArrowRight") setPage(1); if (!active && event.key === "ArrowLeft") setPage(0); }; window.addEventListener("keydown", keydown); return () => window.removeEventListener("keydown", keydown); }, [active]);
+
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+  const [touchStartY, setTouchStartY] = useState<number | null>(null);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    const target = e.target as HTMLElement;
+    if (target.closest('button, a, input')) return;
+    setTouchStartX(e.touches[0].clientX);
+    setTouchStartY(e.touches[0].clientY);
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null || touchStartY === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const touchEndY = e.changedTouches[0].clientY;
+    const deltaX = touchStartX - touchEndX;
+    const deltaY = touchStartY - touchEndY;
+    if (Math.abs(deltaX) >= 48 && Math.abs(deltaX) > Math.abs(deltaY)) {
+      if (deltaX > 0) setPage(1);
+      else setPage(0);
+    }
+    setTouchStartX(null);
+    setTouchStartY(null);
+  };
   const ActiveApp = useMemo(() => { if (active === "about") return <About close={() => setActive(null)} />; if (active === "work") return <Work close={() => setActive(null)} />; if (active === "projects") return <Projects close={() => setActive(null)} />; if (active === "skills") return <Skills close={() => setActive(null)} />; if (active === "contact") return <Contact close={() => setActive(null)} />; return null; }, [active]);
   return (
     <main className="portfolio-shell">
@@ -232,19 +253,50 @@ export default function Home() {
               </div>
             </section>
 
-            <div className={`home-pages page-${page}`} aria-hidden={active !== null}>
+            <div className={`home-pages page-${page}`} aria-hidden={active !== null} onTouchStart={handleTouchStart} onTouchEnd={handleTouchEnd}>
               <section className="home-page main-page">
                 <div className="identity-widget">
-                  <div className="widget-top"><span className="mini-avatar">AA</span><span className="available"><i /> AVAILABLE</span></div>
+                  <div className="widget-top"><span className="mini-avatar">AA</span><span className="available"><i /> Open to roles across Canada</span></div>
                   <h2>Agam Airi</h2>
-                  <p>Mobile &amp; iOS developer · Toronto · 3+ yrs. Native hardware integration, on-device AI, full release ownership.</p>
+                  <p className="mobile-role-line">Mobile Application Developer · iOS Developer · Software Engineer</p>
+                  <p className="mobile-summary">Toronto, ON · 3+ years · native hardware, on-device AI, production release.</p>
                   <QuickLinks className="id-links" />
                   <button onClick={() => setActive("about")}>View profile <span>→</span></button>
                 </div>
                 <div className="app-grid">{apps.slice(0, 4).map((app) => <AppIcon app={app} key={app.id} />)}</div>
                 <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Mobile Application Developer · Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
+                <div className="mobile-proof-strip" aria-label="Production impact">
+                  <div className="mobile-proof-cell"><strong>30%</strong><span>faster SolarX load time</span></div>
+                  <div className="mobile-proof-cell"><strong>300+</strong><span>concurrent airport staff</span></div>
+                  <div className="mobile-proof-cell"><strong>1K+</strong><span>daily passenger-tracking events</span></div>
+                </div>
+                <nav className="mobile-proof-links" aria-label="Pinned project proof">
+                  <a className="mobile-proof-link" href="https://agamairi.github.io/quota-widget-site/" target="_blank" rel="noreferrer" aria-label="QuotaWidget, shipped macOS product, opens in a new tab">QuotaWidget ↗</a>
+                  <a className="mobile-proof-link" href="https://github.com/agamairi/moviebrowser" target="_blank" rel="noreferrer" aria-label="MovieBrowser, native iOS, opens in a new tab">MovieBrowser ↗</a>
+                  <a className="mobile-proof-link" href="https://github.com/agamairi/A.I.R.I" target="_blank" rel="noreferrer" aria-label="A.I.R.I, on-device AI, opens in a new tab">A.I.R.I ↗</a>
+                </nav>
+                <button type="button" className="mobile-page-cue" onClick={() => setPage(1)} aria-label="Open the project shelf">1 of 2 · Project shelf →</button>
               </section>
-              <section className="home-page second-page"><div className="second-title"><span>SELECTED</span><h2>Project shelf</h2></div><div className="mini-project-grid">{projects.slice(0, 4).map((project) => <a href={project.href} target="_blank" rel="noreferrer" key={project.name}><span className="project-icon" style={{ "--project-color": project.tint } as React.CSSProperties}>{project.icon}</span><b>{project.name}</b><small>{project.tag}</small></a>)}</div><button className="all-projects" onClick={() => setActive("projects")}>Browse all projects <span>→</span></button><div className="app-grid single"><AppIcon app={apps[4]} /></div></section>
+              <section className="home-page second-page">
+                <div className="second-title"><span>SELECTED WORK</span><h2>Project shelf</h2><p className="second-subtitle">Open proof for iOS, AI &amp; shipped products</p></div>
+                <div className="mini-project-grid">
+                  {["MovieBrowser", "A.I.R.I", "QuotaWidget", "WeatherNow"].map(name => projects.find(p => p.name === name)!).map((project) => (
+                    <a href={project.href} target="_blank" rel="noreferrer" key={project.name}>
+                      <span className="project-icon" style={{ "--project-color": project.tint } as React.CSSProperties}>{project.icon}</span>
+                      <b>{project.name} ↗</b>
+                      <small>{project.tag}</small>
+                      {project.name === "MovieBrowser" && <span className="project-fit">iOS proof</span>}
+                      {project.name === "A.I.R.I" && <span className="project-fit">On-device AI</span>}
+                      {project.name === "QuotaWidget" && <span className="project-fit">Shipped product</span>}
+                    </a>
+                  ))}
+                </div>
+                <button className="all-projects" onClick={() => setActive("projects")}>Browse all projects <span>→</span></button>
+                <button className="mobile-contact-action app-button" onClick={() => window.dispatchEvent(new CustomEvent("open-app", { detail: "contact" }))} aria-label="Open Contact &amp; résumé">
+                  <span className="app-icon" style={{ "--icon-color": apps[4].color, color: "#fff" } as React.CSSProperties}>{apps[4].icon}</span>
+                  <span className="app-label">Contact &amp; résumé</span>
+                </button>
+              </section>
             </div>
 
             {!active && <>
