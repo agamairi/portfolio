@@ -265,20 +265,22 @@ export default function Home() {
                 </div>
                 <div className="app-grid">{apps.slice(0, 4).map((app) => <AppIcon app={app} key={app.id} />)}</div>
                 <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Mobile Application Developer · Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
-                <div className="mobile-proof-strip" aria-label="Production impact">
-                  <div className="mobile-proof-cell"><strong>30%</strong><span>faster SolarX load time</span></div>
-                  <div className="mobile-proof-cell"><strong>300+</strong><span>concurrent airport staff</span></div>
-                  <div className="mobile-proof-cell"><strong>1K+</strong><span>daily passenger-tracking events</span></div>
+                <div className="mobile-skills" aria-label="Skills at a glance">
+                  <span className="mobile-skills-title">SKILLS AT A GLANCE</span>
+                  {skillAtAGlance.map((group) => (
+                    <div className="mobile-skill-row" key={group.domain}>
+                      <strong>{group.domain}</strong>
+                      <div className="mobile-skill-chips">
+                        {group.technologies.map((t) => <span key={t}>{t}</span>)}
+                      </div>
+                    </div>
+                  ))}
                 </div>
-                <nav className="mobile-proof-links" aria-label="Pinned project proof">
-                  <a className="mobile-proof-link" href="https://agamairi.github.io/quota-widget-site/" target="_blank" rel="noreferrer" aria-label="QuotaWidget, shipped macOS product, opens in a new tab">QuotaWidget ↗</a>
-                  <a className="mobile-proof-link" href="https://github.com/agamairi/moviebrowser" target="_blank" rel="noreferrer" aria-label="MovieBrowser, native iOS, opens in a new tab">MovieBrowser ↗</a>
-                  <a className="mobile-proof-link" href="https://github.com/agamairi/A.I.R.I" target="_blank" rel="noreferrer" aria-label="A.I.R.I, on-device AI, opens in a new tab">A.I.R.I ↗</a>
-                </nav>
-                <button type="button" className="mobile-page-cue" onClick={() => setPage(1)} aria-label="Open the project shelf">1 of 2 · Project shelf →</button>
+                <a className="mobile-resume-btn" href="/Agam_Airi_Resume.pdf" download aria-label="Download résumé PDF">Download résumé ↓</a>
+                <button type="button" className="mobile-page-cue" onClick={() => setPage(1)} aria-label="Swipe to see projects">Swipe to see projects →</button>
               </section>
               <section className="home-page second-page">
-                <div className="second-title"><span>SELECTED WORK</span><h2>Project shelf</h2><p className="second-subtitle">Open proof for iOS, AI &amp; shipped products</p></div>
+                <div className="second-title"><span>SELECTED WORK</span><h2>Projects</h2><p className="second-subtitle">Open proof for iOS, AI &amp; shipped products</p></div>
                 <div className="mini-project-grid">
                   {["MovieBrowser", "A.I.R.I", "QuotaWidget", "WeatherNow"].map(name => projects.find(p => p.name === name)!).map((project) => (
                     <a href={project.href} target="_blank" rel="noreferrer" key={project.name}>
