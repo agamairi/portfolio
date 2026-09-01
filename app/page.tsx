@@ -81,10 +81,10 @@ function QuickLinks({ className = "" }: { className?: string }) {
 }
 
 const apps: { id: AppId; label: string; color: string; glyph: string; icon: React.ReactNode }[] = [
-  { id: "about", label: "Profile", color: "#669BBC", glyph: "AA", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c.8-4 3.5-6 8-6s7.2 2 8 6" /></svg> },
-  { id: "work", label: "Experience", color: "#F3A712", glyph: "EX", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" /></svg> },
+  { id: "about", label: "About", color: "#669BBC", glyph: "AA", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4" /><path d="M4 21c.8-4 3.5-6 8-6s7.2 2 8 6" /></svg> },
   { id: "projects", label: "Work samples", color: "#E4572E", glyph: "PR", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z" /><path d="m10 11-2 2 2 2M14 11l2 2-2 2" /></svg> },
   { id: "skills", label: "Skills", color: "#A8C686", glyph: "SK", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="m12 3 8 4-8 4-8-4 8-4ZM4 12l8 4 8-4M4 17l8 4 8-4" /></svg> },
+  { id: "work", label: "Experience", color: "#F3A712", glyph: "EX", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="7" width="18" height="13" rx="2" /><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18M10 12v2h4v-2" /></svg> },
   { id: "contact", label: "Contact & résumé", color: "#29335C", glyph: "CO", icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><circle cx="9" cy="12" r="2.2" /><path d="M14 10h4M14 14h4M6.5 16c.5-1.4 1.6-2 2.5-2s2 .6 2.5 2" /></svg> },
 ];
 
@@ -97,7 +97,7 @@ function Chrome({ title, onClose, children }: { title: string; onClose: () => vo
 }
 
 function About({ close }: { close: () => void }) {
-  return <Chrome title="Profile" onClose={close}>
+  return <Chrome title="About" onClose={close}>
     <div className="profile-hero"><div className="monogram">AA</div><div><p className="eyebrow">Mobile Application Developer · iOS Developer · Software Engineer</p><h2>Agam Airi</h2><p>Toronto, Canada</p></div></div>
     <div className="intro-card"><p>I build mobile software that bridges custom hardware, on-device AI, and polished UX, from native integration through production release.</p></div>
     <div className="stats-grid"><div><strong>3+</strong><span>years building</span></div><div><strong>10+</strong><span>apps shipped</span></div><div><strong>5+</strong><span>developers mentored</span></div><div><strong>3</strong><span>release channels shipped</span></div></div>
@@ -164,7 +164,7 @@ export default function Home() {
 
             <section className="ipad-home" aria-hidden={active !== null}>
               <header className="ipad-greeting">
-                <div><p>{date || "Monday, August 24"}</p><h1>Hi, I&rsquo;m <span>Agam.</span></h1><p className="ipad-start-here">Start here: 3+ years shipping iOS and cross-platform mobile products for hardware-connected systems.</p></div>
+                <div><p>{date || "Monday, August 24"}</p><h1>Hi, I&rsquo;m <span>Agam.</span></h1><p className="ipad-start-here">3+ years shipping iOS and cross-platform mobile products for hardware-connected systems.</p></div>
                 <div className="ipad-greeting-side">
                   <span className="ipad-avail"><i /> Open to roles across Canada</span>
                   <QuickLinks />

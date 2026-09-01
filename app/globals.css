@@ -94,7 +94,7 @@
 
 /* Rotator & conversion additions */
 @keyframes rotFade{from{opacity:0}to{opacity:1}}
-.rot-fade{animation:rotFade .28s ease forwards}
+.rot-fade{animation:rotFade .56s ease forwards}
 @media(prefers-reduced-motion:reduce){.rot-fade{animation:none}}
 .rot-dots{display:flex;gap:5px;align-items:center;justify-content:center}
 .rot-dots button{width:6px;height:6px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.35);cursor:pointer;transition:background .2s,transform .2s}
@@ -178,3 +178,5 @@
 .ipad-profile h2 { font-size: clamp(21px,2.2vw,31px); line-height: 1.08; }
 .ipad-profile h2 em { display: block; min-height: 2.1em; }
 .ipad-stats .rot-dots, .ipad-project .ipad-proj-actions .rot-dots { margin-bottom: 6px; }
+.ipad-project .rot-dots button{background:rgba(255,255,255,.28)}
+.ipad-project .rot-dots button.on{background:var(--gold);transform:scale(1.4)}
