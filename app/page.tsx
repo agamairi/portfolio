@@ -249,7 +249,7 @@ export default function Home() {
 
             {!active && <>
               <div className="page-dots"><button className={page === 0 ? "active" : ""} onClick={() => setPage(0)} aria-label="Go to first home screen" /><button className={page === 1 ? "active" : ""} onClick={() => setPage(1)} aria-label="Go to second home screen" /></div>
-              <nav className="dock" aria-label="Quick launch">{apps.filter((app) => ["projects", "skills", "contact"].includes(app.id)).map((app) => <AppIcon app={app} small key={app.id} />)}<a className="app-button small" href="mailto:agam.airi@outlook.com" aria-label="Email Agam"><span className="app-icon mail-icon" style={{ color: "#fff" }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg></span><span className="app-label">Email</span></a></nav>
+              <nav className="dock" aria-label="Quick launch">{apps.filter((app) => ["about", "projects", "skills", "contact"].includes(app.id)).map((app) => <AppIcon app={app} small key={app.id} />)}</nav>
             </>}
             {ActiveApp}
             <button className="home-indicator" onClick={() => setActive(null)} aria-label="Return home" />
