@@ -5,16 +5,16 @@ import { useEffect, useMemo, useState } from "react";
 type AppId = "about" | "work" | "projects" | "skills" | "contact";
 
 const projects = [
-  { name: "QuotaWidget", tag: "Shipped macOS app", tint: "#E4572E", icon: "QW", copy: "A native macOS menu-bar and WidgetKit app that tracks AI-coding quota across Claude Code, Codex, and Antigravity. Reads local CLI logs only, with no servers. $2.99 one-time.", stack: ["Swift", "WidgetKit", "AppKit", "macOS"], href: "https://agamairi.github.io/quota-widget-site/" },
-  { name: "A.I.R.I", tag: "On-device AI · Flutter · 20★", tint: "#669BBC", icon: "AI", copy: "A privacy-first Flutter app running local LLMs with on-device RAG, multimodal chat, voice, and an OpenAI-compatible LAN server.", stack: ["Flutter", "llama.cpp", "RAG", "TTS / STT"], href: "https://github.com/agamairi/A.I.R.I" },
-  { name: "MovieBrowser", tag: "Native iOS · Swift / SwiftUI", tint: "#29335C", icon: "MB", copy: "A SwiftUI MVVM app with a protocol-first service layer, multi-layer caching (NSCache + URLCache), dependency injection, Core Image gradients, and XCTest coverage.", stack: ["SwiftUI", "Combine", "Core Image", "XCTest"], href: "https://github.com/agamairi/moviebrowser" },
-  { name: "WeatherNow", tag: "Native iOS · SwiftUI", tint: "#669BBC", icon: "WN", copy: "A native SwiftUI weather app with URLSession, Codable JSON, MVVM, search history, and App Store-ready loading and error states.", stack: ["SwiftUI", "URLSession", "Codable", "UserDefaults"], href: "https://github.com/agamairi/WeatherNow" },
-  { name: "forge_mvvm", tag: "Published Flutter package", tint: "#F3A712", icon: "FM", copy: "An MVVM and Clean Architecture framework on pub.dev with runtime dependency-graph validation, typed async primitives, and a feature-scaffolding CLI.", stack: ["Dart", "Flutter", "MVVM", "CLI"], href: "https://pub.dev/packages/forge_mvvm" },
-  { name: "PrepStation", tag: "Video editor · iOS + macOS", tint: "#A8C686", icon: "PS", copy: "A Flutter video editor for iOS and macOS with a multi-track timeline, 30+ transitions, keyframe animation, FFmpeg export, and Apple Vision background removal.", stack: ["Flutter", "FFmpeg", "Apple Vision", "macOS"], href: "https://github.com/agamairi/prepstation-video-editor" },
-  { name: "DreamAiri", tag: "Full-stack agentic assistant", tint: "#E4572E", icon: "DA", copy: "A full-stack AI coding assistant for game development with a Go backend (JWT, WebSocket), PostgreSQL, and real-time tool execution inside the Godot editor.", stack: ["Go", "WebSocket", "PostgreSQL", "Godot"], href: "https://github.com/agamairi/dreamairi-plugin" },
-  { name: "AI Council", tag: "Multi-LLM platform · Python · 9★", tint: "#669BBC", icon: "AC", copy: "A fully offline Flask and Socket.IO platform for local LLM debate, web research, document analysis, and tool use.", stack: ["Python", "Flask", "Socket.IO", "Local LLMs"], href: "https://github.com/agamairi/ai-council" },
-  { name: "sfxr macOS port", tag: "Native macOS · Objective-C++", tint: "#29335C", icon: "SF", copy: "A native Cocoa and AppKit port of the classic sfxr sound-effect generator with Core Audio, WAV export, .sfs load/save, and universal binaries.", stack: ["Objective-C++", "AppKit", "Core Audio", "Cocoa"], href: "https://github.com/agamairi/sfxr-mac-port" },
-  { name: "job-swipe", tag: "Job-search app · Flutter", tint: "#A8C686", icon: "JS", copy: "A Flutter job-search app with a swipe-based browsing interface.", stack: ["Flutter", "Dart"], href: "https://github.com/agamairi/job-swipe" },
+  { name: "QuotaWidget", tag: "Shipped macOS app", tint: "#E4572E", icon: "QW", copy: "A shipped macOS product with a native menu bar and WidgetKit interface for tracking AI coding quotas. The app securely parses local CLI logs without external servers and includes an automated release feed.", stack: ["Swift", "WidgetKit", "AppKit", "macOS"], href: "https://agamairi.github.io/quota-widget-site/" },
+  { name: "A.I.R.I", tag: "On-device AI · Flutter · 20★", tint: "#669BBC", icon: "AI", copy: "A privacy-first Flutter client running language models entirely offline via llama.cpp. It implements on-device retrieval augmented generation alongside multimodal chat, voice synthesis, and a local area network API compatible with OpenAI.", stack: ["Flutter", "llama.cpp", "RAG", "TTS / STT"], href: "https://github.com/agamairi/A.I.R.I" },
+  { name: "MovieBrowser", tag: "Native iOS · Swift / SwiftUI", tint: "#29335C", icon: "MB", copy: "A native iOS application showcasing a protocol-first service layer and strict MVVM architecture. It resolves performance bottlenecks using multi-layer caching with NSCache and URLCache, builds dynamic Core Image gradients, and maintains deep XCTest coverage.", stack: ["SwiftUI", "Combine", "Core Image", "XCTest"], href: "https://github.com/agamairi/moviebrowser" },
+  { name: "WeatherNow", tag: "Native iOS · SwiftUI", tint: "#669BBC", icon: "WN", copy: "A native iOS weather client built with SwiftUI that handles type-safe JSON parsing through URLSession and Codable. The view layer binds to ObservableObject for reactive state management while persisting search history locally via UserDefaults.", stack: ["SwiftUI", "URLSession", "Codable", "UserDefaults"], href: "https://github.com/agamairi/WeatherNow" },
+  { name: "forge_mvvm", tag: "Published Flutter package", tint: "#F3A712", icon: "FM", copy: "A published Flutter framework on pub.dev designed for enforcing strict MVVM and Clean Architecture patterns. It guarantees reliable architecture through runtime dependency graph validation, provides typed asynchronous primitives, and includes a scaffolding command line tool.", stack: ["Dart", "Flutter", "MVVM", "CLI"], href: "https://pub.dev/packages/forge_mvvm" },
+  { name: "PrepStation", tag: "Video editor · iOS + macOS", tint: "#A8C686", icon: "PS", copy: "A non-linear video editor for iOS and macOS engineered entirely in Flutter. The application coordinates a complex multi-track timeline, handles keyframe animations and FFmpeg export pipelines, and integrates Apple Vision for real-time background removal.", stack: ["Flutter", "FFmpeg", "Apple Vision", "macOS"], href: "https://github.com/agamairi/prepstation-video-editor" },
+  { name: "DreamAiri", tag: "Full-stack agentic assistant", tint: "#E4572E", icon: "DA", copy: "A full-stack agentic coding assistant engineered as a Godot editor plugin. The architecture pairs a Go backend utilizing JWT, WebSockets, and PostgreSQL with a multi-turn LLM workflow that triggers real-time tool execution within the game engine.", stack: ["Go", "WebSocket", "PostgreSQL", "Godot"], href: "https://github.com/agamairi/dreamairi-plugin" },
+  { name: "AI Council", tag: "Multi-LLM platform · Python · 9★", tint: "#669BBC", icon: "AC", copy: "A fully offline Python research platform leveraging Flask and Socket.IO to coordinate collaboration between multiple local language models. The system orchestrates sequential debates, autonomous document analysis, and iterative web search entirely on the host machine.", stack: ["Python", "Flask", "Socket.IO", "Local LLMs"], href: "https://github.com/agamairi/ai-council" },
+  { name: "sfxr macOS port", tag: "Native macOS · Objective-C++", tint: "#29335C", icon: "SF", copy: "A native Cocoa and AppKit port of the classic sfxr sound effect generator built as a universal binary for Apple Silicon. The Objective-C++ architecture integrates Core Audio for low-latency playback and handles direct WAV file exports.", stack: ["Objective-C++", "AppKit", "Core Audio", "Cocoa"], href: "https://github.com/agamairi/sfxr-mac-port" },
+  { name: "job-swipe", tag: "Job-search app · Flutter", tint: "#A8C686", icon: "JS", copy: "A Flutter job search application built around a high-performance card swiping interface. The implementation optimizes complex gesture recognition and asynchronous background data loading to guarantee smooth framerates during continuous browsing.", stack: ["Flutter", "Dart"], href: "https://github.com/agamairi/job-swipe" },
 ];
 
 const skillAtAGlance = [
@@ -24,9 +24,9 @@ const skillAtAGlance = [
 ];
 
 const featuredBuilds = [
-  { name: "QuotaWidget", mark: "QW", desc: "Shipped native macOS menu-bar app that tracks AI-coding quota, fully local.", href: "https://agamairi.github.io/quota-widget-site/", cta: "Visit site ↗" },
-  { name: "A.I.R.I", mark: "AI", desc: "Flutter · on-device LLMs · local RAG · voice · OpenAI-compatible LAN server.", href: "https://github.com/agamairi/A.I.R.I", cta: "View on GitHub ↗" },
-  { name: "MovieBrowser", mark: "MB", desc: "Native iOS / SwiftUI · MVVM · protocol-first services · layered caching · XCTest.", href: "https://github.com/agamairi/moviebrowser", cta: "View on GitHub ↗" },
+  { name: "QuotaWidget", mark: "QW", desc: "Shipped native macOS menu bar app that tracks AI coding quotas locally. It parses CLI logs directly to provide secure widget updates without external servers. The product includes a marketing site and an automated release feed.", href: "https://agamairi.github.io/quota-widget-site/", cta: "Visit site ↗" },
+  { name: "A.I.R.I", mark: "AI", desc: "Flutter, on-device LLMs, local RAG, voice, OpenAI-compatible LAN server. The architecture runs models securely offline while exposing a local API for network access. It handles multimodal chat and text to speech entirely on the host machine.", href: "https://github.com/agamairi/A.I.R.I", cta: "View on GitHub ↗" },
+  { name: "MovieBrowser", mark: "MB", desc: "Native iOS, SwiftUI, MVVM, protocol-first services, layered caching, XCTest. Dynamic UI components adapt to content using Core Image rendering and careful state management. The codebase emphasizes testability across all service and view model layers.", href: "https://github.com/agamairi/moviebrowser", cta: "View on GitHub ↗" },
 ];
 
 const stackHighlights = [
@@ -52,7 +52,11 @@ function useRotator(count: number, ms: number) {
     onFocusCapture: () => setPaused(true),
     onBlurCapture: () => setPaused(false),
   };
-  return { index, setIndex, holdProps };
+  return { index, setIndex, holdProps, paused };
+}
+
+function RotProgress({ ms, index, paused, accent }: { ms: number; index: number; paused: boolean; accent: string }) {
+  return <span className="rot-progress" key={index} style={{ animationDuration: `${ms}ms`, animationPlayState: paused ? "paused" : "running", ["--rot-accent" as any]: accent }} />;
 }
 
 function Dots({ count, index, onPick }: { count: number; index: number; onPick: (i: number) => void }) {
@@ -85,7 +89,7 @@ const apps: { id: AppId; label: string; color: string; glyph: string; icon: Reac
 ];
 
 function AppIcon({ app, small = false }: { app: (typeof apps)[number]; small?: boolean }) {
-  return <button className={`app-button ${small ? "small" : ""}`} onClick={() => window.dispatchEvent(new CustomEvent("open-app", { detail: app.id }))} aria-label={`Open ${app.label}`}><span className="app-icon" style={{ "--icon-color": app.color, color: "#fff" } as React.CSSProperties}>{app.icon}</span>{!small && <span className="app-label">{app.label}</span>}</button>;
+  return <button className={`app-button ${small ? "small" : ""}`} onClick={() => window.dispatchEvent(new CustomEvent("open-app", { detail: app.id }))} aria-label={`Open ${app.label}`}><span className="app-icon" style={{ "--icon-color": app.color, color: "#fff" } as React.CSSProperties}>{app.icon}</span><span className="app-label">{app.label}</span></button>;
 }
 
 function Chrome({ title, onClose, children }: { title: string; onClose: () => void; children: React.ReactNode }) {
@@ -126,12 +130,15 @@ function Contact({ close }: { close: () => void }) {
   return <Chrome title="Contact & résumé" onClose={close}><div className="contact-hero"><span className="availability-dot" /><p>OPEN TO MOBILE, iOS & SOFTWARE ENGINEERING ROLES</p><h2>Let’s build something useful.</h2><span>Based in Toronto · Open to on-site, hybrid, or remote roles across Canada.</span></div><div className="contact-actions"><a href="mailto:agam.airi@outlook.com" className="primary-action">Write an email <span>↗</span></a><button onClick={copyEmail} className="secondary-action">{copied ? "Email copied" : "Copy email"}<span>{copied ? "✓" : "⌘"}</span></button><a href="/Agam_Airi_Resume.pdf" download className="secondary-action">Download résumé <span>↓</span></a></div><div className="contact-list"><a href="https://www.linkedin.com/in/agam-airi" target="_blank" rel="noreferrer"><span className="social-icon linkedin">in</span><div><b>LinkedIn</b><small>linkedin.com/in/agam-airi</small></div><i>↗</i></a><a href="https://github.com/agamairi" target="_blank" rel="noreferrer"><span className="social-icon github">GH</span><div><b>GitHub</b><small>github.com/agamairi</small></div><i>↗</i></a></div><p className="contact-note">I usually reply within one business day.</p></Chrome>;
 }
 
+const headlineTail = ["ship.", "reach the App Store.", "run AI on-device.", "outlast the sprint."];
+
 export default function Home() {
   const [active, setActive] = useState<AppId | null>(null);
   const [time, setTime] = useState("");
   const [date, setDate] = useState("");
   const [page, setPage] = useState(0);
 
+  const headRot = useRotator(headlineTail.length, 3200);
   const statsRot = useRotator(skillAtAGlance.length, 7000);
   const projRot = useRotator(featuredBuilds.length, 8000);
   const stackRot = useRotator(stackHighlights.length, 8000);
@@ -164,9 +171,9 @@ export default function Home() {
                 </div>
               </header>
               <div className="ipad-grid">
-                <button className="ipad-widget ipad-profile" onClick={() => setActive("about")}>
+                <button className="ipad-widget ipad-profile" onClick={() => setActive("about")} {...headRot.holdProps}>
                   <div className="widget-top"><span className="mini-avatar">AA</span><span className="widget-chip">PROFILE</span></div>
-                  <div><p>Agam Airi · Toronto, ON · 3+ yrs</p><h2>Mobile apps for<br /><em>hardware + AI.</em></h2><p className="ipad-profile-sub">Mobile Application Developer · iOS Developer · Software Engineer</p></div>
+                  <div><p>Agam Airi · Toronto, ON · 3+ yrs</p><h2>Mobile apps built to<br /><em key={headRot.index} className="rot-fade">{headlineTail[headRot.index]}</em></h2><p className="ipad-profile-sub">Mobile Application Developer · iOS Developer · Software Engineer</p></div>
                   <span className="widget-link">Open About <b>↗</b></span>
                 </button>
                 <button className="ipad-widget ipad-current" onClick={() => setActive("work")}>
@@ -181,6 +188,7 @@ export default function Home() {
                     <div className="skills-at-glance"><strong>{skillAtAGlance[statsRot.index].domain}</strong><div className="skill-glance-pills">{skillAtAGlance[statsRot.index].technologies.map((technology) => <span key={technology}>{technology}</span>)}</div></div>
                   </div>
                   <Dots count={skillAtAGlance.length} index={statsRot.index} onPick={statsRot.setIndex} />
+                  <RotProgress ms={7000} index={statsRot.index} paused={statsRot.paused} accent="var(--navy)" />
                 </div>
                 <div className="ipad-widget ipad-project" role="button" tabIndex={0} onClick={() => setActive("projects")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("projects"); } }} {...projRot.holdProps}>
                   <div className="project-orbit"><span>{featuredBuilds[projRot.index].mark}</span><i /><i /><i /></div>
@@ -198,6 +206,7 @@ export default function Home() {
                     <button type="button" onClick={() => setActive("projects")}>All projects →</button>
                     <Dots count={featuredBuilds.length} index={projRot.index} onPick={projRot.setIndex} />
                   </div>
+                  <RotProgress ms={8000} index={projRot.index} paused={projRot.paused} accent="var(--gold)" />
                 </div>
                 <div className="ipad-widget ipad-stack" role="button" tabIndex={0} onClick={() => setActive("skills")} onKeyDown={(e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setActive("skills"); } }} {...stackRot.holdProps}>
                   <div className="widget-top"><span className="widget-chip">CORE STACK</span><span>↗</span></div>
@@ -240,7 +249,7 @@ export default function Home() {
 
             {!active && <>
               <div className="page-dots"><button className={page === 0 ? "active" : ""} onClick={() => setPage(0)} aria-label="Go to first home screen" /><button className={page === 1 ? "active" : ""} onClick={() => setPage(1)} aria-label="Go to second home screen" /></div>
-              <nav className="dock" aria-label="Quick launch">{apps.filter((app) => ["projects", "skills", "contact"].includes(app.id)).map((app) => <AppIcon app={app} small key={app.id} />)}<a className="app-button small" href="mailto:agam.airi@outlook.com" aria-label="Email Agam"><span className="app-icon mail-icon" style={{ color: "#fff" }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg></span></a></nav>
+              <nav className="dock" aria-label="Quick launch">{apps.filter((app) => ["projects", "skills", "contact"].includes(app.id)).map((app) => <AppIcon app={app} small key={app.id} />)}<a className="app-button small" href="mailto:agam.airi@outlook.com" aria-label="Email Agam"><span className="app-icon mail-icon" style={{ color: "#fff" }}><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg></span><span className="app-label">Email</span></a></nav>
             </>}
             {ActiveApp}
             <button className="home-indicator" onClick={() => setActive(null)} aria-label="Return home" />

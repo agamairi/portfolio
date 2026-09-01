@@ -165,3 +165,16 @@
 
 .app-icon svg { width: 56%; height: 56%; }
 .app-button.small .app-icon svg { width: 60%; height: 60%; }
+
+/* RotProgress and Dock labels */
+.rot-progress { position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; transform-origin: left; transform: scaleX(0); background: var(--rot-accent); box-shadow: inset 0 0 0 100px rgba(255,255,255,.14); animation-name: rotProgress; animation-timing-function: linear; animation-fill-mode: forwards; }
+@keyframes rotProgress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .rot-progress { display: none; } }
+
+.dock { height: auto !important; min-height: 78px; padding-bottom: 8px !important; }
+.dock .app-button.small { display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; width: auto; }
+.dock .app-button.small .app-label { font-size: 7px; color: rgba(255,255,255,0.85); text-shadow: none; display: block; overflow: visible; white-space: nowrap; line-height: 1; letter-spacing: 0.02em; }
+
+.ipad-profile h2 { font-size: clamp(21px,2.2vw,31px); line-height: 1.08; }
+.ipad-profile h2 em { display: block; min-height: 2.1em; }
+.ipad-stats .rot-dots, .ipad-project .ipad-proj-actions .rot-dots { margin-bottom: 6px; }
