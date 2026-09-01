@@ -103,6 +103,17 @@ function About({ close }: { close: () => void }) {
     <div className="stats-grid"><div><strong>3+</strong><span>years building</span></div><div><strong>10+</strong><span>apps shipped</span></div><div><strong>5+</strong><span>developers mentored</span></div><div><strong>3</strong><span>release channels shipped</span></div></div>
     <section className="content-section"><p className="section-label">HOW I WORK</p><h3>Native depth. Cross-platform speed.</h3><p>My core stack is Flutter, Swift, SwiftUI, and Kotlin, alongside Go and Node.js backend services. I own clean, tested software from native bridges and hardware integration to the App Store, Google Play, and enterprise MDM.</p></section>
     <section className="content-section education-card"><p className="section-label">EDUCATION</p><div className="education-row"><span>2022-2023</span><div><b>Computer Programming</b><p>Seneca College · Toronto</p></div></div><div className="education-row"><span>2018-2021</span><div><b>BBA, IT Specialization</b><p>Sardar Patel University</p></div></div></section>
+    <section className="content-section experience-card">
+      <p className="section-label">EXPERIENCE</p>
+      <div className="about-exp-row">
+        <div className="about-exp-head"><b>Mobile Application Developer</b><span>Solaris Robots · Feb 2024 to now</span></div>
+        <p>Owns iOS and Android products for robotics, IoT, and airport operations, from native plugin development to App Store and enterprise MDM release. Led the PRMGO migration to Flutter and Node.js (300+ concurrent Toronto Pearson staff, 1,000+ daily passenger-tracking events); built a Kotlin UART bridge and a Swift IoT bridge for custom hardware, telemetry, and OTA firmware; set up APNs push via Amazon SNS; cut SolarX load times by 30%; leads peer review of AI-generated code.</p>
+      </div>
+      <div className="about-exp-row">
+        <div className="about-exp-head"><b>Mobile Developer and Mentor</b><span>Independent · 2023 to 2024</span></div>
+        <p>Shipped 10+ mobile and cross-platform projects across Flutter, Swift, SwiftUI, Objective-C, and React. Mentored 5+ junior developers in architecture, OOP, and data structures.</p>
+      </div>
+    </section>
   </Chrome>;
 }
 
@@ -263,7 +274,6 @@ export default function Home() {
                   <QuickLinks className="id-links" />
                   <button onClick={() => setActive("about")}>View profile <span>→</span></button>
                 </div>
-                <div className="app-grid">{apps.slice(0, 4).map((app) => <AppIcon app={app} key={app.id} />)}</div>
                 <button className="featured-widget" onClick={() => setActive("work")}><div><span className="widget-label">CURRENTLY</span><h3>Mobile Application Developer · Solaris Robots</h3><p>Robotics · IoT · Airport operations</p></div><span className="widget-arrow">↗</span></button>
                 <div className="mobile-glance" {...statsRot.holdProps}>
                   <span className="widget-chip">SKILLS AT A GLANCE</span>
