@@ -38,10 +38,14 @@ let html = await res.text();
 
 // Make every root-absolute asset/file reference relative so the page works from
 // any path (project Pages sites are served under /<repo>/).
+const localFiles = "og\\.png|favicon\\.svg|file\\.svg|globe\\.svg|window\\.svg|_headers";
 html = html
   .replace(/([="'(]|\\")\/assets\//g, "$1./assets/")
   .replace(/([="'(]|\\")\/(Agam_[^"'()\\]+\.pdf)/g, "$1./$2")
-  .replace(/([="'(]|\\")\/(og\.png|favicon\.svg|file\.svg|globe\.svg|window\.svg|_headers)/g, "$1./$2")
+  .replace(new RegExp(`([="'(]|\\\\")\\/(${localFiles})`, "g"), "$1./$2")
+  // Next resolves icon/OG paths against metadataBase, producing origin-absolute
+  // URLs that drop the /<repo>/ path on a project Pages site. Re-relativize them.
+  .replace(new RegExp(`https?:\\/\\/[^"'()\\\\ ]+?\\/(${localFiles})`, "g"), "./$1")
   .replace(/href="\/"/g, 'href="./"');
 
 await rm(outDir, { recursive: true, force: true });
